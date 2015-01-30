@@ -441,6 +441,13 @@ namespace DrRobot.JaguarControl
             lastEncoderPulseL = currentEncoderPulseL;
             lastEncoderPulseR = currentEncoderPulseR;
 
+            // calculate wheel distances based on encoder pulses
+            wheelDistanceL = ((double)diffEncoderPulseL / (double)pulsesPerRotation) * 2 * Math.PI * wheelRadius;
+            wheelDistanceR = ((double)diffEncoderPulseR / (double)pulsesPerRotation) * 2 * Math.PI * wheelRadius;
+
+            // calculate distance travelled
+
+
             // ****************** Additional Student Code: End   ************
         }
 
