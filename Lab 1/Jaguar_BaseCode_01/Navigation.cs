@@ -415,36 +415,28 @@ namespace DrRobot.JaguarControl
             double diffEncoderPulseL;
             double diffEncoderPulseR;
 
+            // Accounted for the encoder on the right side that moves in the opposite direction
+            // relative to the left side by giving it a negative sign
             double initialL = lastEncoderPulseL;
             double finalL = currentEncoderPulseL;
-            double initialR = lastEncoderPulseR;
-            double finalR = currentEncoderPulseR;
+            double initialR = -lastEncoderPulseR;
+            double finalR = -currentEncoderPulseR;
 
-            
-            // forward wrap around
-            /*if ((motorSignalL > 0) && (lastEncoderPulseL > currentEncoderPulseL))
-                diffEncoderPulseL = encoderMax - lastEncoderPulseL + currentEncoderPulseL;
-
-            // backward wrap around
-            else if ((motorSignalL < 0) && (lastEncoderPulseL < currentEncoderPulseL))
-                diffEncoderPulseL = (encoderMax + lastEncoderPulseL - currentEncoderPulseL);
-
-            else*/
+            // Accounted for the wrap around by making sure that the distance traveled by the encoder
+            // remained under the threshold value of a single wheel rotation
+            if (finalL - initialL < -encoderMax)
+                diffEncoderPulseL = encoderMax - initialL + finalL;
+            else if (finalL - initialL > encoderMax)
+                diffEncoderPulseL = initialL + encoderMax - finalL;
+            else
                 diffEncoderPulseL = finalL - initialL;
 
-            // forward wrap around
-            //if ((motorSignalR > 0) && (lastEncoderPulseR < currentEncoderPulseR))
-                diffEncoderPulseR = encoderMax - finalR + initialR;
-
-            // backward wrap around
-            /*else if ((motorSignalR < 0) && (lastEncoderPulseR > currentEncoderPulseR))
-                diffEncoderPulseR = (encoderMax - lastEncoderPulseR + currentEncoderPulseR);
-
+            if (finalR - initialR < -encoderMax)
+                diffEncoderPulseR = encoderMax - initialR + finalR;
+            else if (finalR - initialR > encoderMax)
+                diffEncoderPulseR = initialR + encoderMax - finalR;
             else
-                diffEncoderPulseR = currentEncoderPulseR - lastEncoderPulseR;*/
-
-            Console.Write("left encoder: " + diffEncoderPulseL + "\n");
-            Console.Write("right encoder: " + diffEncoderPulseR + "\n");
+                diffEncoderPulseR = finalR - initialR;
 
             // update the last encoder measurements
             lastEncoderPulseL = currentEncoderPulseL;
