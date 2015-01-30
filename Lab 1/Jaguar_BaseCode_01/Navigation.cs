@@ -415,28 +415,32 @@ namespace DrRobot.JaguarControl
             double diffEncoderPulseL;
             double diffEncoderPulseR;
 
+            
             // forward wrap around
             if ((motorSignalL > 0) && (lastEncoderPulseL > currentEncoderPulseL))
                 diffEncoderPulseL = encoderMax - lastEncoderPulseL + currentEncoderPulseL;
 
             // backward wrap around
             else if ((motorSignalL < 0) && (lastEncoderPulseL < currentEncoderPulseL))
-                diffEncoderPulseL = encoderMax + lastEncoderPulseL - currentEncoderPulseR;
+                diffEncoderPulseL = (encoderMax + lastEncoderPulseL - currentEncoderPulseL);
 
             else
                 diffEncoderPulseL = currentEncoderPulseL - lastEncoderPulseL;
 
             // forward wrap around
-            if ((motorSignalR > 0) && (lastEncoderPulseR > currentEncoderPulseR))
-                diffEncoderPulseR = encoderMax - lastEncoderPulseR + currentEncoderPulseR;
+            if ((motorSignalR > 0) && (lastEncoderPulseR < currentEncoderPulseR))
+                diffEncoderPulseR = encoderMax + lastEncoderPulseR - currentEncoderPulseR;
 
             // backward wrap around
-            if ((motorSignalR < 0) && (lastEncoderPulseR < currentEncoderPulseR))
-                diffEncoderPulseR = encoderMax + lastEncoderPulseR - currentEncoderPulseR;
+            else if ((motorSignalR < 0) && (lastEncoderPulseR > currentEncoderPulseR))
+                diffEncoderPulseR = (encoderMax - lastEncoderPulseR + currentEncoderPulseR);
 
             else
                 diffEncoderPulseR = currentEncoderPulseR - lastEncoderPulseR;
-            
+
+            Console.Write("left encoder: " + diffEncoderPulseL + "\n");
+            Console.Write("right encoder: " + diffEncoderPulseR + "\n");
+
             // update the last encoder measurements
             lastEncoderPulseL = currentEncoderPulseL;
             lastEncoderPulseR = currentEncoderPulseR;
@@ -463,10 +467,22 @@ namespace DrRobot.JaguarControl
             // (i.e. using last x, y, t as well as angleTravelled and distanceTravelled).
             // Make sure t stays between pi and -pi
 
+            double deltaX = distanceTravelled * Math.Cos(t + (double)angleTravelled / (double)2);
+            double deltaY = distanceTravelled * Math.Sin(t + (double)angleTravelled / (double)2);
+            double totalAngle = t + angleTravelled;
+
             // Update the actual
-            x = 0;//0;
-            y = 0;
-            t = 0;
+            x += deltaX;
+            y += deltaY;
+
+            if (totalAngle > Math.PI)
+                t = -(2 * Math.PI) + totalAngle;
+            else if (totalAngle < -Math.PI)
+                t = (2 * Math.PI) + totalAngle;
+            else
+                t = totalAngle;
+            
+
 
 
             // ****************** Additional Student Code: End   ************
