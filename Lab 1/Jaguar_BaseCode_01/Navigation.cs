@@ -424,16 +424,16 @@ namespace DrRobot.JaguarControl
 
             // Accounted for the wrap around by making sure that the distance traveled by the encoder
             // remained under the threshold value of a single wheel rotation
-            if (finalL - initialL < -encoderMax)
+            if (finalL - initialL < -pulsesPerRotation)
                 diffEncoderPulseL = encoderMax - initialL + finalL;
-            else if (finalL - initialL > encoderMax)
+            else if (finalL - initialL > pulsesPerRotation)
                 diffEncoderPulseL = initialL + encoderMax - finalL;
             else
                 diffEncoderPulseL = finalL - initialL;
 
-            if (finalR - initialR < -encoderMax)
+            if (finalR - initialR < -pulsesPerRotation)
                 diffEncoderPulseR = encoderMax - initialR + finalR;
-            else if (finalR - initialR > encoderMax)
+            else if (finalR - initialR > pulsesPerRotation)
                 diffEncoderPulseR = initialR + encoderMax - finalR;
             else
                 diffEncoderPulseR = finalR - initialR;
