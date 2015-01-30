@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.IO;
-// comment
+
 namespace DrRobot.JaguarControl
 {
     public class Navigation
@@ -48,6 +48,9 @@ namespace DrRobot.JaguarControl
         const double phoTrackingAccuracy = 0.10;
         double time = 0;
         DateTime startTime;
+
+        private String streamPath_;
+
         #endregion
 
 
@@ -275,7 +278,15 @@ namespace DrRobot.JaguarControl
             //int fileCnt= 0;
             String date = DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + "-" + DateTime.Now.Minute.ToString();
             ToString();
-            logFile = File.CreateText("../../../Data/JaguarData_" + date + ".txt");
+            //logFile = File.CreateText("../../../Data/JaguarData_" + date + ".txt");
+
+            streamPath_ = "../../../Data/JaguarData_" + date + ".csv";
+            logFile = File.CreateText(streamPath_);
+            string header = "time,x,y,t";
+            logFile.WriteLine(header);
+            logFile.Close();
+
+            //logFile = File.CreateText("../../../Data/JaguarData_" + date + ".csv"); // write to an Excel file instead
             startTime = DateTime.Now;
             loggingOn = true;
         }
@@ -300,9 +311,13 @@ namespace DrRobot.JaguarControl
                 time = ts.TotalSeconds;
                 //String newData = time.ToString() + " " + x.ToString() + " " + y.ToString() + " " + t.ToString();
 
-                String newData = time.ToString() + " " + (LaserData[113]).ToString() + " " + (1000 - LaserData[113]).ToString();
+                //String newData = time.ToString() + " " + (LaserData[113]).ToString() + " " + (1000 - LaserData[113]).ToString();
 
+                String newData = time.ToString() + "," + x.ToString() + "," + y.ToString() + "," + t.ToString(); // separate by commas
+
+                logFile = File.AppendText(streamPath_);
                 logFile.WriteLine(newData);
+                logFile.Close();
             }
         }
         #endregion
