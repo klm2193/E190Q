@@ -415,28 +415,33 @@ namespace DrRobot.JaguarControl
             double diffEncoderPulseL;
             double diffEncoderPulseR;
 
+            double initialL = lastEncoderPulseL;
+            double finalL = currentEncoderPulseL;
+            double initialR = lastEncoderPulseR;
+            double finalR = currentEncoderPulseR;
+
             
             // forward wrap around
-            if ((motorSignalL > 0) && (lastEncoderPulseL > currentEncoderPulseL))
+            /*if ((motorSignalL > 0) && (lastEncoderPulseL > currentEncoderPulseL))
                 diffEncoderPulseL = encoderMax - lastEncoderPulseL + currentEncoderPulseL;
 
             // backward wrap around
             else if ((motorSignalL < 0) && (lastEncoderPulseL < currentEncoderPulseL))
                 diffEncoderPulseL = (encoderMax + lastEncoderPulseL - currentEncoderPulseL);
 
-            else
-                diffEncoderPulseL = currentEncoderPulseL - lastEncoderPulseL;
+            else*/
+                diffEncoderPulseL = finalL - initialL;
 
             // forward wrap around
-            if ((motorSignalR > 0) && (lastEncoderPulseR < currentEncoderPulseR))
-                diffEncoderPulseR = encoderMax + lastEncoderPulseR - currentEncoderPulseR;
+            //if ((motorSignalR > 0) && (lastEncoderPulseR < currentEncoderPulseR))
+                diffEncoderPulseR = encoderMax - finalR + initialR;
 
             // backward wrap around
-            else if ((motorSignalR < 0) && (lastEncoderPulseR > currentEncoderPulseR))
+            /*else if ((motorSignalR < 0) && (lastEncoderPulseR > currentEncoderPulseR))
                 diffEncoderPulseR = (encoderMax - lastEncoderPulseR + currentEncoderPulseR);
 
             else
-                diffEncoderPulseR = currentEncoderPulseR - lastEncoderPulseR;
+                diffEncoderPulseR = currentEncoderPulseR - lastEncoderPulseR;*/
 
             Console.Write("left encoder: " + diffEncoderPulseL + "\n");
             Console.Write("right encoder: " + diffEncoderPulseR + "\n");

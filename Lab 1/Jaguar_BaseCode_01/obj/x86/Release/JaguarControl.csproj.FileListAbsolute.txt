@@ -409,3 +409,24 @@ C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Rel
 C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
 C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
 C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.exe
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.pdb
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csprojResolveAssemblyReference.cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.exe
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.pdb
