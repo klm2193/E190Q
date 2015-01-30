@@ -158,7 +158,7 @@ namespace DrRobot.JaguarControl
                 LocalizeRealWithOdometry();
 
                 // Estimate the global state of the robot -x_est, y_est, t_est (lab 4)
-                LocalizeEstWithParticleFilter();
+                //LocalizeEstWithParticleFilter();
 
 
                 // If using the point tracker, call the function
@@ -412,7 +412,34 @@ namespace DrRobot.JaguarControl
             // wheelDistanceL, wheelRadius, encoderResolution etc. These are defined
             // in the Robot.h file.
 
+            double diffEncoderPulseL;
+            double diffEncoderPulseR;
+
+            // forward wrap around
+            if ((motorSignalL > 0) && (lastEncoderPulseL > currentEncoderPulseL))
+                diffEncoderPulseL = encoderMax - lastEncoderPulseL + currentEncoderPulseL;
+
+            // backward wrap around
+            else if ((motorSignalL < 0) && (lastEncoderPulseL < currentEncoderPulseL))
+                diffEncoderPulseL = encoderMax + lastEncoderPulseL - currentEncoderPulseR;
+
+            else
+                diffEncoderPulseL = currentEncoderPulseL - lastEncoderPulseL;
+
+            // forward wrap around
+            if ((motorSignalR > 0) && (lastEncoderPulseR > currentEncoderPulseR))
+                diffEncoderPulseR = encoderMax - lastEncoderPulseR + currentEncoderPulseR;
+
+            // backward wrap around
+            if ((motorSignalR < 0) && (lastEncoderPulseR < currentEncoderPulseR))
+                diffEncoderPulseR = encoderMax + lastEncoderPulseR - currentEncoderPulseR;
+
+            else
+                diffEncoderPulseR = currentEncoderPulseR - lastEncoderPulseR;
             
+            // update the last encoder measurements
+            lastEncoderPulseL = currentEncoderPulseL;
+            lastEncoderPulseR = currentEncoderPulseR;
 
             // ****************** Additional Student Code: End   ************
         }
