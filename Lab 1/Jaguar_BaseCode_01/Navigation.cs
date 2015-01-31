@@ -447,8 +447,8 @@ namespace DrRobot.JaguarControl
             wheelDistanceR = ((double)diffEncoderPulseR / (double)pulsesPerRotation) * 2 * Math.PI * wheelRadius;
 
             // calculate distance travelled
-            distanceTravelled = (double)((wheelDistanceL + wheelDistanceR) / 2);
-            angleTravelled = (double)((wheelDistanceR - wheelDistanceL) / (2 * robotRadius));
+            distanceTravelled = (double)((wheelDistanceL + wheelDistanceR) / 2.0);
+            angleTravelled = (double)((wheelDistanceR - wheelDistanceL) / (2.0 * robotRadius));
 
             // ****************** Additional Student Code: End   ************
         }
