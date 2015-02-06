@@ -174,7 +174,7 @@ namespace DrRobot.JaguarControl
                     }
 
                     // Drive the robot to 1meter from the wall. Otherwise, comment it out after lab 1. 
-                    WallPositioning();
+                    //WallPositioning();
 
                     // Drive the robot to a desired Point (lab 3)
                     FlyToSetPoint();
@@ -342,11 +342,11 @@ namespace DrRobot.JaguarControl
 
             // Send Control signals, put negative on left wheel control
 
-            Console.WriteLine(centralLaserRange.ToString());
+            //Console.WriteLine(centralLaserRange.ToString());
 
             
-            motorSignalR = (short)(-maxVelocity * (1000 - centralLaserRange)); //desiredWheelSpeedL
-            motorSignalL = (short)(-maxVelocity * (1000 - centralLaserRange)); //desiredWheelSpeedL
+            motorSignalR = (short)(-maxVelocity * (1000 - centralLaserRange));
+            motorSignalL = (short)(-maxVelocity * (1000 - centralLaserRange));
             
             /* //Victory Dance
             if (centralLaserRange == 1000)
@@ -371,7 +371,8 @@ namespace DrRobot.JaguarControl
             // motorSignalL. Make sure the robot does not exceed 
             // maxVelocity!!!!!!!!!!!!
 
-
+            motorSignalR = (short)(maxVelocity * 3000 * (desiredX - x)/(double)(Math.Abs(desiredX)));
+            motorSignalL = (short)(maxVelocity * 3000 * (desiredX - x)/(double)(Math.Abs(desiredX)));
 
             // ****************** Additional Student Code: End   ************
         }
