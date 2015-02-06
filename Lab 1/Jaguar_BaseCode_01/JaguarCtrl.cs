@@ -125,7 +125,7 @@ namespace DrRobot.JaguarControl
         private const int MAXPWM = 16384;
         private const int MINPWM = 4000;
         private const int INIPWM = 16384;
-        private int MOTDIR = 1;
+        private int MOTDIR = 4;
      
         private const int CMD_INT_TIME = 10;
         private bool armJoy2 = false;
@@ -883,7 +883,7 @@ namespace DrRobot.JaguarControl
             if ((!protectMotorTemp) && (!protectMotorStuck))
             {
                 turnVel = (MOTDIR * trackBarTurnPower.Value);
-                turnVel = Math.Min(100, Math.Max(-100, turnVel));
+                turnVel = Math.Max(-800, Math.Min(800, turnVel));
             }
             else
                 turnVel = 0;

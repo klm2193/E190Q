@@ -743,8 +743,8 @@
             // 
             this.trackBarTurnPower.BackColor = System.Drawing.Color.DimGray;
             this.trackBarTurnPower.Location = new System.Drawing.Point(284, 454);
-            this.trackBarTurnPower.Maximum = 100;
-            this.trackBarTurnPower.Minimum = -100;
+            this.trackBarTurnPower.Maximum = 200;
+            this.trackBarTurnPower.Minimum = -200;
             this.trackBarTurnPower.Name = "trackBarTurnPower";
             this.trackBarTurnPower.Size = new System.Drawing.Size(200, 42);
             this.trackBarTurnPower.TabIndex = 18;
