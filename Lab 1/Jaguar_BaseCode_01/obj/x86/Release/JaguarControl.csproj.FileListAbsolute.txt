@@ -429,3 +429,4 @@ C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\J
 C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache
 C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.exe
 C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.pdb
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csprojResolveAssemblyReference.cache

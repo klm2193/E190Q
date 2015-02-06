@@ -47,6 +47,9 @@ namespace DrRobot.JaguarControl
         private static int yMax = paneHeight + yMin;
         private static int xCenter = xMin + paneWidth / 2;
         private static int yCenter = yMin + paneHeight / 2;
+        
+        private static int constxCenter = xCenter;
+        private static int constyCenter = yCenter;
         private static Point oPoint = new Point(xMin, yMin);
         private static Pen blackPen = new Pen(Color.Black, 1);
         private static Pen whitePen = new Pen(Color.White, 10);
@@ -210,6 +213,8 @@ namespace DrRobot.JaguarControl
 
         private void Animate()
         {
+            xCenter = (int)(constxCenter - navigation.x * mapResolution);
+            yCenter = (int)(constyCenter + navigation.y * mapResolution);
             // Create bitmap to write to            
             Bitmap gBuffer= new Bitmap(paneWidth, paneHeight);
             using (Graphics g = Graphics.FromImage(gBuffer))
@@ -1179,6 +1184,16 @@ namespace DrRobot.JaguarControl
         }
 
         # endregion
+
+        private void trackBarForwardPower_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBarTurnPower_Scroll(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }
