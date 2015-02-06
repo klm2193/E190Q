@@ -427,14 +427,14 @@ namespace DrRobot.JaguarControl
             if (finalL - initialL < -pulsesPerRotation)
                 diffEncoderPulseL = encoderMax - initialL + finalL;
             else if (finalL - initialL > pulsesPerRotation)
-                diffEncoderPulseL = initialL + encoderMax - finalL;
+                diffEncoderPulseL = finalL-initialL - encoderMax;
             else
                 diffEncoderPulseL = finalL - initialL;
 
             if (finalR - initialR < -pulsesPerRotation)
                 diffEncoderPulseR = encoderMax - initialR + finalR;
             else if (finalR - initialR > pulsesPerRotation)
-                diffEncoderPulseR = initialR + encoderMax - finalR;
+                diffEncoderPulseR = finalR - initialR - encoderMax;
             else
                 diffEncoderPulseR = finalR - initialR;
 
