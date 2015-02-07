@@ -371,8 +371,11 @@ namespace DrRobot.JaguarControl
             // motorSignalL. Make sure the robot does not exceed 
             // maxVelocity!!!!!!!!!!!!
 
-            motorSignalR = (short)(maxVelocity * 3000 * (desiredX - x)/(double)(Math.Abs(desiredX)));
-            motorSignalL = (short)(maxVelocity * 3000 * (desiredX - x)/(double)(Math.Abs(desiredX)));
+            motorSignalR = (short)(maxVelocity * 500 * (desiredX - x)/(double)(Math.Abs(desiredX)));
+            motorSignalL = (short)(maxVelocity * 500 * (desiredX - x)/(double)(Math.Abs(desiredX)));
+
+           // motorSignalR = (short)(maxVelocity * 400 * Math.Exp(-(1 - (desiredX - x) / (double)(Math.Abs(desiredX)))));
+            //motorSignalL = (short)(maxVelocity * 400 * Math.Exp(-(1 - (desiredX - x) / (double)(Math.Abs(desiredX)))));
 
             // ****************** Additional Student Code: End   ************
         }
