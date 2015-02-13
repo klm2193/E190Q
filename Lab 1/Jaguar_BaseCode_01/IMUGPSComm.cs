@@ -117,6 +117,21 @@ namespace DrRobot.JaguarControl
         private int drawStartPoint = 0;
         private int drawEndPoint = 0;
 
+        public double getAccel_x()
+        {
+            return imuRecord.accel_x;
+        }
+        
+        public double getAccel_y()
+        {
+            return imuRecord.accel_y;
+        }
+
+        public double getAccel_z()
+        {
+            return imuRecord.accel_z;
+        }
+
         private void startComm()
         {
             int remotePortGPS = jaguarSetting.GPSPort;
@@ -546,6 +561,7 @@ namespace DrRobot.JaguarControl
             gEarth.googleEarth.LoadKmlData(ref data);
 
         }
+
 
     }
 }

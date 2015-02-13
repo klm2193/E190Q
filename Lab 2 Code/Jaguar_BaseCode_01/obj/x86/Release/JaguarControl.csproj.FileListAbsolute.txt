@@ -1,0 +1,432 @@
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_016\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_020\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_022\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_023\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_024\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_025\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_030\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_031\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_032\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_033\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_034\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_035\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_036\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_037\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_040\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\JaguarControl.exe
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\JaguarControl.pdb
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\Interop.DRROBOTSDKCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Root\Desktop\Jaguar\Chris_Jaguar\Jaguar_041\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.exe
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.pdb
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csprojResolveAssemblyReference.cache
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.exe
+C:\Users\Kristina\Documents\HMC\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.pdb
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.exe
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.pdb
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.exe
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.pdb
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csprojResolveAssemblyReference.cache
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.exe
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\JaguarControl.pdb
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.exe
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.pdb
+C:\Users\Yeahmoon Hong\Documents\Senior Year\Autonomous Navigation\E190Q\Lab 1\Jaguar_BaseCode_01\obj\x86\Release\JaguarControl.csprojResolveAssemblyReference.cache
