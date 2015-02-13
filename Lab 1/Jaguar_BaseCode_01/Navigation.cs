@@ -46,10 +46,10 @@ namespace DrRobot.JaguarControl
         public double robotRadius = 0.242;//0.232
         private double angleTravelled, distanceTravelled;
         private double diffEncoderPulseL, diffEncoderPulseR;
-        private double maxVelocity = 0.25;
-        private double Kpho = 1;
-        private double Kalpha = 2;//8
-        private double Kbeta = -0.5;//-0.5//-1.0;
+        private double maxVelocity = 0.1;// 0.25;
+        private double Kpho = 0.2;//1;
+        private double Kalpha = -0.25;//2;//8
+        private double Kbeta = 0.25;//-0.5;//-0.5//-1.0;
         const double alphaTrackingAccuracy = 0.10;
         const double betaTrackingAccuracy = 0.1;
         const double phoTrackingAccuracy = 0.10;
@@ -518,6 +518,58 @@ namespace DrRobot.JaguarControl
             // motorSignalL. Make sure the robot does not exceed 
             // maxVelocity!!!!!!!!!!!!
 
+            // calculate position of robot relative to goal position
+            double deltaX = desiredX - x_est;
+            double deltaY = desiredY - y_est;
+            double deltaT = desiredT - t_est;
+
+            double alpha = -t + Math.Atan2(deltaY, deltaX);
+
+            // bound alpha between -pi and pi
+            if (alpha > Math.PI)
+                alpha = -(2 * Math.PI) + alpha;
+            else if (alpha < -Math.PI)
+                alpha = (2 * Math.PI) + alpha;
+
+            double pho = Math.Pow(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2), 0.5);
+            double beta = -t - alpha;
+
+            // determine desired forward and rotational velocities
+            double desiredV = Kpho * pho;
+            double desiredW = (Kalpha * alpha) + (Kbeta * beta);
+            
+            // the goal is behind us, change our control system
+            if ((alpha < -Math.PI / 2) || (alpha > Math.PI / 2))
+            {
+                alpha = -t + Math.Atan2(-deltaY, -deltaX);
+
+                // bound alpha between -pi and pi
+                if (alpha > Math.PI)
+                    alpha = -(2 * Math.PI) + alpha;
+                else if (alpha < -Math.PI)
+                    alpha = (2 * Math.PI) + alpha;
+
+                // redefine pho, beta, desiredV, and desiredW
+                pho = Math.Pow(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2), 0.5);
+                beta = -t - alpha;
+
+                desiredV = -Kpho * pho;
+                desiredW = (Kalpha * alpha) + (Kbeta * beta);
+            }
+
+            // calculate desired wheel velocities
+            if ((Math.Abs(deltaX) < 0.1) && (Math.Abs(deltaY) < 0.1) && (Math.Abs(deltaT) < 0.18))
+            {
+                desiredRotRateL = 0;
+                desiredRotRateR = 0;
+            }
+
+            else
+            {
+                desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
+                desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+            }
+            
 
             // ****************** Additional Student Code: End   ************
         }
@@ -558,8 +610,8 @@ namespace DrRobot.JaguarControl
             // wheelDistanceL, wheelRadius, encoderResolution etc. These are defined
             // in the Robot.h file.
 
-            double diffEncoderPulseL;
-            double diffEncoderPulseR;
+            //double diffEncoderPulseL;
+            //double diffEncoderPulseR;
 
             // Accounted for the encoder on the right side that moves in the opposite direction
             // relative to the left side by giving it a negative sign
