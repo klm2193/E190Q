@@ -48,8 +48,8 @@ namespace DrRobot.JaguarControl
         private double diffEncoderPulseL, diffEncoderPulseR;
         private double maxVelocity = 0.1;// 0.25;
         private double Kpho =   0.1; //0.2;
-        private double Kalpha = -0.5;//-0.25;
-        private double Kbeta =  0.2; //0.25;
+        private double Kalpha = -0.4;//-0.25;
+        private double Kbeta =  0.1; //0.25;
         const double alphaTrackingAccuracy = 0.10;
         const double betaTrackingAccuracy = 0.1;
         const double phoTrackingAccuracy = 0.10;
@@ -530,44 +530,54 @@ namespace DrRobot.JaguarControl
             double desiredV;
             double desiredW;
 
-            if (Math.Abs(alpha) < Math.PI / 2)
+            if (pho >= 0.1)
             {
-                desiredV = Kpho * pho;
-                desiredW = (Kalpha * alpha) + (Kbeta * beta);
 
-                desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
-                desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
-            }
-
-            // If the target is behind the robot, the desiredV and desiredW should have their signs flipped
-            //if (Math.Abs(alpha) > Math.PI/2)
-            else
-            {
-                if (alpha > 0)
+                if (Math.Abs(alpha) < Math.PI / 2)
                 {
-                    alpha = alpha - Math.PI;
+                    desiredV = Kpho * pho;
+                    desiredW = (Kalpha * alpha) + (Kbeta * beta);
+
+                    desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
+                    desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
                 }
+
+                // If the target is behind the robot, the desiredV and desiredW should have their signs flipped
+                //if (Math.Abs(alpha) > Math.PI/2)
                 else
                 {
-                    alpha = alpha + Math.PI;
-                }
-                
-                beta = -t - alpha + desiredT;
-                desiredV = Kpho * pho;
-                desiredW = (Kalpha * alpha) + (Kbeta * beta);
+                    if (alpha > 0)
+                    {
+                        alpha = alpha - Math.PI;
+                    }
+                    else
+                    {
+                        alpha = alpha + Math.PI;
+                    }
 
-                desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
-                desiredRotRateL = (short)-(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+                    beta = -t - alpha + desiredT;
+                    desiredV = Kpho * pho;
+                    desiredW = (Kalpha * alpha) + (Kbeta * beta);
+
+                    desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
+                    desiredRotRateL = (short)-(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+                }
             }
 
-            
-            
 
-            if (pho < 0.1 && deltaT < 0.09) // if the robot reaches a desired distance range and angle, it should stop the motors
+
+
+            if ((pho < 0.1) && (Math.Abs(deltaT) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
             {
                  desiredRotRateL = 0;
                  desiredRotRateR = 0;
             }
+            else if ((pho < 0.1) && (Math.Abs(deltaT) > 0.09))
+            {
+                 desiredRotRateR = (short)(maxVelocity * 5000 * deltaT);
+                 desiredRotRateL = (short)-(maxVelocity * 5000 * deltaT);
+            }
+            
 
             
             // ****************** Additional Student Code: End   ************
