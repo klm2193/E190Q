@@ -49,7 +49,7 @@ namespace DrRobot.JaguarControl
         private double maxVelocity = 0.1;// 0.25;
         private double Kpho =   0.1; //0.2;
         private double Kalpha = -0.5;//-0.25;
-        private double Kbeta =  0.05; //0.25;
+        private double Kbeta =  0.2; //0.25;
         const double alphaTrackingAccuracy = 0.10;
         const double betaTrackingAccuracy = 0.1;
         const double phoTrackingAccuracy = 0.10;
@@ -520,100 +520,55 @@ namespace DrRobot.JaguarControl
 
             double pho = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
             double alpha = -t + Math.Atan2(deltaY, deltaX);
-            double beta = -t - alpha;
+            double beta = -t - alpha + desiredT;
 
             if (alpha > Math.PI)
                 alpha = -(2 * Math.PI) + alpha;
             else if (alpha < -Math.PI)
                 alpha = (2 * Math.PI) + alpha;
 
-            double desiredV = Kpho * pho;
-            double desiredW = (Kalpha * alpha) + (Kbeta * beta);
+            double desiredV;
+            double desiredW;
 
-            // If the target is behind the robot, the desiredV and desiredW should have their signs flipped
-            if (Math.Abs(alpha) >= Math.PI/2)
+            if (Math.Abs(alpha) < Math.PI / 2)
             {
-                desiredV = -desiredV;
-                desiredW = -desiredW;
+                desiredV = Kpho * pho;
+                desiredW = (Kalpha * alpha) + (Kbeta * beta);
+
+                desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
+                desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
             }
 
+            // If the target is behind the robot, the desiredV and desiredW should have their signs flipped
+            //if (Math.Abs(alpha) > Math.PI/2)
+            else
+            {
+                if (alpha > 0)
+                {
+                    alpha = alpha - Math.PI;
+                }
+                else
+                {
+                    alpha = alpha + Math.PI;
+                }
+                
+                beta = -t - alpha + desiredT;
+                desiredV = Kpho * pho;
+                desiredW = (Kalpha * alpha) + (Kbeta * beta);
 
-            desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
-            desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+                desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
+                desiredRotRateL = (short)-(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+            }
 
-            if (pho < 0.1)
+            
+            
+
+            if (pho < 0.1 && deltaT < 0.09) // if the robot reaches a desired distance range and angle, it should stop the motors
             {
                  desiredRotRateL = 0;
                  desiredRotRateR = 0;
             }
 
-
-       #if false        
-            // Put code here to calculate motorSignalR and 
-            // motorSignalL. Make sure the robot does not exceed 
-            // maxVelocity!!!!!!!!!!!!
-
-            // calculate position of robot relative to goal position
-            double deltaX = desiredX - x_est;
-            double deltaY = desiredY - y_est;
-            double deltaT = desiredT - t_est;
-
-            double alpha = -t + Math.Atan2(deltaY, deltaX);
-
-            // bound alpha between -pi and pi
-            /*
-            if (alpha > Math.PI)
-                alpha = -(2 * Math.PI) + alpha;
-            else if (alpha < -Math.PI)
-                alpha = (2 * Math.PI) + alpha;
-             */
-
-            double pho = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
-            double beta = -t - alpha + desiredT;
-
-            // determine desired forward and rotational velocities
-            double desiredV = Kpho * pho;
-            double desiredW = (Kalpha * alpha) + (Kbeta * beta);
-            
-            // the goal is behind us, change our control system
-            if ((alpha < -Math.PI / 2) || (alpha > Math.PI / 2))
-            {
-                alpha = -t + Math.Atan2(-deltaY, -deltaX);
-
-                // bound alpha between -pi and pi
-                /*
-                if (alpha > Math.PI)
-                    alpha = -(2 * Math.PI) + alpha;
-                else if (alpha < -Math.PI)
-                    alpha = (2 * Math.PI) + alpha;
-                 */
-
-                // redefine pho, beta, desiredV, and desiredW
-                pho = Math.Pow(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2), 0.5);
-                beta = -t - alpha + desiredT;
-
-                desiredV = -Kpho * pho;
-                desiredW = (Kalpha * alpha) + (Kbeta * beta);
-            }
-
-            if (alpha > Math.PI)
-                alpha = -(2 * Math.PI) + alpha;
-            else if (alpha < -Math.PI)
-                alpha = (2 * Math.PI) + alpha;
-
-            // calculate desired wheel velocities
-            if ((Math.Abs(deltaX) < 0.1) && (Math.Abs(deltaY) < 0.1) && (Math.Abs(deltaT) < 0.18))
-            {
-                desiredRotRateL = 0;
-                desiredRotRateR = 0;
-            }
-
-            else
-            {
-                desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
-                desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
-            }
-        #endif
             
             // ****************** Additional Student Code: End   ************
         }
