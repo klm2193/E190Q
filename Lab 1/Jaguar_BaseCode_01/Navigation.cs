@@ -46,10 +46,10 @@ namespace DrRobot.JaguarControl
         public double robotRadius = 0.242;//0.232
         private double angleTravelled, distanceTravelled;
         private double diffEncoderPulseL, diffEncoderPulseR;
-        private double maxVelocity = 0.1;// 0.25;
-        private double Kpho =   0.1; //0.2;
-        private double Kalpha = -0.4;//-0.25;
-        private double Kbeta =  0.1; //0.25;
+        private double maxVelocity = 0.3;// 0.25;
+        private double Kpho = 0.5;//0.1; //0.2;
+        private double Kalpha = -2.0;//-0.4;//-0.25;
+        private double Kbeta =  0.5;//0.1; //0.25;
         const double alphaTrackingAccuracy = 0.10;
         const double betaTrackingAccuracy = 0.1;
         const double phoTrackingAccuracy = 0.10;
@@ -538,8 +538,8 @@ namespace DrRobot.JaguarControl
                     desiredV = Kpho * pho;
                     desiredW = (Kalpha * alpha) + (Kbeta * beta);
 
-                    desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
-                    desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+                    desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * pulsesPerRotation / (2 * Math.PI));
+                    desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * pulsesPerRotation / (2 * Math.PI));
                 }
 
                 // If the target is behind the robot, the desiredV and desiredW should have their signs flipped
@@ -577,9 +577,32 @@ namespace DrRobot.JaguarControl
                  desiredRotRateR = (short)(maxVelocity * 5000 * deltaT);
                  desiredRotRateL = (short)-(maxVelocity * 5000 * deltaT);
             }
-            
 
-            
+            double VelL = desiredRotRateL * 2 * Math.PI * wheelRadius/pulsesPerRotation;
+            double VelR = desiredRotRateR * 2 * Math.PI * wheelRadius/pulsesPerRotation;
+
+            double maxPulsesPerSec = maxVelocity * pulsesPerRotation / (2 * Math.PI * wheelRadius);
+
+            if ((Math.Abs(VelL) > maxVelocity) && (Math.Abs(VelL) >= Math.Abs(VelR)))
+            {
+                double VelRatio = desiredRotRateR/desiredRotRateL;
+                double sign = (desiredRotRateL < 0) ? -1 : 1;
+
+                desiredRotRateL = (short)(maxPulsesPerSec * sign);
+                desiredRotRateR = (short)(maxPulsesPerSec * VelRatio);
+            }
+
+            else if ((Math.Abs(VelR) > maxVelocity) && (Math.Abs(VelR) >= Math.Abs(VelL)))
+            {
+                double VelRatio = desiredRotRateL/desiredRotRateR;
+                double sign = (desiredRotRateR < 0) ? -1 : 1;
+
+                desiredRotRateR = (short)(maxPulsesPerSec * sign);
+                desiredRotRateL = (short)(maxPulsesPerSec * VelRatio);
+            }
+
+            Console.Write("Left Speed: " + (desiredRotRateL * 2 * Math.PI * 0.089/190) + "\n");
+            Console.Write("Right Speed: " + (desiredRotRateR* 2 * Math.PI * 0.089/190) + "\n");
             // ****************** Additional Student Code: End   ************
         }
 
