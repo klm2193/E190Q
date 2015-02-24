@@ -71,6 +71,9 @@ namespace DrRobot.JaguarControl
         public double accCalib_x = 18;
         public double accCalib_y = 4;
 
+        public double pho = 0;
+        public double deltaAngle = 0;
+
         private String streamPath_;
 
         #endregion
@@ -357,23 +360,27 @@ namespace DrRobot.JaguarControl
         }
         public void CalcMotorSignals()
         {
-            short zeroOutput = 16383;
-            short maxPosOutput = 32767;
+            short zeroOutput = 16383;       //sets lower limit to motor signal
+            short maxPosOutput = 32767;     //sets upper limit to motor signal
 
-            double K_p = 25;;
+            double K_p = 25;       //PID Constants
             double K_i = 0.1;
             double K_d = 1;
 
-            double maxErr = 8000 / deltaT;
+            double K_p_R = 25;       //Only Rotation PID Constants
+            double K_i_R = 0.1;
+            double K_d_R = 1;
+
+            double maxErr = 8000 / deltaT;  //sets the maximum value for integration of velocity error
 
 
-            e_L = desiredRotRateL - diffEncoderPulseL / deltaT;
+            e_L = desiredRotRateL - diffEncoderPulseL / deltaT; //calculates the proportional error of velocity
             e_R = desiredRotRateR - diffEncoderPulseR / deltaT;
 
-            e_sum_L = .9 * e_sum_L + e_L * deltaT;
+            e_sum_L = .9 * e_sum_L + e_L * deltaT;  //calculates the integral term ... not sure what the 0.9 term is
             e_sum_R = .9 * e_sum_R + e_R * deltaT;
 
-            e_sum_L = Math.Max(-maxErr, Math.Min(e_sum_L, maxErr));
+            e_sum_L = Math.Max(-maxErr, Math.Min(e_sum_L, maxErr)); //limits the integral term of the error
             e_sum_R = Math.Max(-maxErr, Math.Min(e_sum_R, maxErr));
 
             u_L = ((K_p * e_L) + (K_i * e_sum_L) + (K_d * (e_L - e_L_last) / deltaT));
@@ -387,12 +394,24 @@ namespace DrRobot.JaguarControl
             //motorSignalR = (short)(zeroOutput - desiredRotRateR * 100);//(zeroOutput - u_R);
 
             motorSignalL = (short)(zeroOutput + u_L);
-            motorSignalR = (short)(zeroOutput - u_R);
+            motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because te encoders count backwards
 
-            motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL));
+            motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
 
- 
+            /*
+            //PID Control for Rotation
+            if ((pho < 0.1) && (Math.Abs(deltaAngle) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
+            {
+                motorSignalL = 0;
+                motorSignalR = 0;
+            }
+            else if ((pho < 0.1) && (Math.Abs(deltaAngle) > 0.09))
+            {
+                u_L = ((K_p_R * e_L) + (K_i_R * e_sum_L) + (K_d_R * (e_L - e_L_last) / deltaT));
+                u_R = ((K_p_R * e_R) + (K_i_R * e_sum_R) + (K_d_R * (e_R - e_R_last) / deltaT));                
+            }
+            */
         }
 
         // At every iteration of the control loop, this function sends
@@ -517,8 +536,10 @@ namespace DrRobot.JaguarControl
             double deltaX = desiredX - x_est;
             double deltaY = desiredY - y_est;
             double deltaT = desiredT - t_est;
+            deltaAngle = deltaT;
 
-            double pho = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
+            //double pho = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
+            pho = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
             double alpha = -t + Math.Atan2(deltaY, deltaX);
             double beta = -t - alpha + desiredT;
 
@@ -565,8 +586,6 @@ namespace DrRobot.JaguarControl
             }
 
 
-
-
             if ((pho < 0.1) && (Math.Abs(deltaT) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
             {
                  desiredRotRateL = 0;
@@ -578,6 +597,7 @@ namespace DrRobot.JaguarControl
                  desiredRotRateL = (short)-(maxVelocity * 5000 * deltaT);
             }
 
+            // Setting the Maximum Velocity
             double VelL = desiredRotRateL * 2 * Math.PI * wheelRadius/pulsesPerRotation;
             double VelR = desiredRotRateR * 2 * Math.PI * wheelRadius/pulsesPerRotation;
 
@@ -585,24 +605,26 @@ namespace DrRobot.JaguarControl
 
             if ((Math.Abs(VelL) > maxVelocity) && (Math.Abs(VelL) >= Math.Abs(VelR)))
             {
-                double VelRatio = desiredRotRateR/desiredRotRateL;
-                double sign = (desiredRotRateL < 0) ? -1 : 1;
+                double VelRatio = Math.Abs(desiredRotRateR/desiredRotRateL);
+                double signL = (desiredRotRateL < 0) ? -1 : 1;
+                double signR = (desiredRotRateR < 0) ? -1 : 1;
 
-                desiredRotRateL = (short)(maxPulsesPerSec * sign);
-                desiredRotRateR = (short)(maxPulsesPerSec * VelRatio);
+                desiredRotRateL = (short)(maxPulsesPerSec * signL);
+                desiredRotRateR = (short)(maxPulsesPerSec * signR * VelRatio);
             }
 
             else if ((Math.Abs(VelR) > maxVelocity) && (Math.Abs(VelR) >= Math.Abs(VelL)))
             {
-                double VelRatio = desiredRotRateL/desiredRotRateR;
-                double sign = (desiredRotRateR < 0) ? -1 : 1;
+                double VelRatio = Math.Abs(desiredRotRateL/desiredRotRateR);
+                double signR = (desiredRotRateR < 0) ? -1 : 1;
+                double signL = (desiredRotRateL < 0) ? -1 : 1;
 
-                desiredRotRateR = (short)(maxPulsesPerSec * sign);
-                desiredRotRateL = (short)(maxPulsesPerSec * VelRatio);
+                desiredRotRateR = (short)(maxPulsesPerSec * signR);
+                desiredRotRateL = (short)(maxPulsesPerSec * signL * VelRatio);
             }
-
-            Console.Write("Left Speed: " + (desiredRotRateL * 2 * Math.PI * 0.089/190) + "\n");
-            Console.Write("Right Speed: " + (desiredRotRateR* 2 * Math.PI * 0.089/190) + "\n");
+            
+            //Console.Write("Left Speed: " + (desiredRotRateL * 2 * Math.PI * 0.089/190) + "\n");
+            //Console.Write("Right Speed: " + (desiredRotRateR* 2 * Math.PI * 0.089/190) + "\n");
             // ****************** Additional Student Code: End   ************
         }
 
