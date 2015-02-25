@@ -47,9 +47,9 @@ namespace DrRobot.JaguarControl
         private double angleTravelled, distanceTravelled;
         private double diffEncoderPulseL, diffEncoderPulseR;
         private double maxVelocity = 0.3;// 0.25;
-        private double Kpho = 0.5;//0.1; //0.2;
-        private double Kalpha = -2.0;//-0.4;//-0.25;
-        private double Kbeta =  0.5;//0.1; //0.25;
+        private double Kpho = 0.5;//0.5;
+        private double Kalpha = -2.0;//-2.0;
+        private double Kbeta = 0.5;//0.5;
         const double alphaTrackingAccuracy = 0.10;
         const double betaTrackingAccuracy = 0.1;
         const double phoTrackingAccuracy = 0.10;
@@ -73,6 +73,8 @@ namespace DrRobot.JaguarControl
 
         public double pho = 0;
         public double deltaAngle = 0;
+        Boolean InitialReached = false;
+        double desiredAngle = 0;
 
         private String streamPath_;
 
@@ -208,10 +210,10 @@ namespace DrRobot.JaguarControl
                     //WallPositioning();
 
                     // Drive the robot to a desired Point (lab 3)
-                    FlyToSetPoint();
+                    //FlyToSetPoint();
 
                     // Follow the trajectory instead of a desired point (lab 3)
-                    //TrackTrajectory();
+                    TrackTrajectory();
 
                     // Actuate motors based actuateMotorL and actuateMotorR
                     if (jaguarControl.Simulating())
@@ -399,7 +401,7 @@ namespace DrRobot.JaguarControl
             motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
 
-            /*
+            
             //PID Control for Rotation
             if ((pho < 0.1) && (Math.Abs(deltaAngle) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
             {
@@ -411,7 +413,7 @@ namespace DrRobot.JaguarControl
                 u_L = ((K_p_R * e_L) + (K_i_R * e_sum_L) + (K_d_R * (e_L - e_L_last) / deltaT));
                 u_R = ((K_p_R * e_R) + (K_i_R * e_sum_R) + (K_d_R * (e_R - e_R_last) / deltaT));                
             }
-            */
+            
         }
 
         // At every iteration of the control loop, this function sends
@@ -633,7 +635,38 @@ namespace DrRobot.JaguarControl
         // THis function is called to follow a trajectory constructed by PRMMotionPlanner()
         private void TrackTrajectory()
         {
+            // Following a Straight Line
+            /*
+            desiredX = x_est + 0.1;
+            desiredY = desiredX * 2 + 1;
+            desiredT = Math.Atan2(2, 1);
+            */
 
+            if ((x_est < 2) && (!InitialReached))
+            {
+                desiredX = 2.2;
+                desiredY = 0;
+                desiredT = -1.57;
+            }
+
+            else
+            {
+                InitialReached = true;
+                //double angleWRTCircle = Math.Atan2(y_est, x_est);
+                //double desiredAngle = angleWRTCircle - 0.31;
+                desiredAngle = desiredAngle - 0.001;
+                desiredT = desiredAngle - 1.57;
+                
+                if (desiredT > Math.PI)
+                    desiredT = -(2 * Math.PI) + desiredT;
+                else if (desiredT < -Math.PI)
+                    desiredT = (2 * Math.PI) + desiredT;
+                
+                desiredX = 2 * Math.Cos(desiredAngle);  //THIS MIGHT BE WRONG< CHECK IT. OR DESIRED ANGLE
+                desiredY = 2 * Math.Sin(desiredAngle);
+            }
+
+            FlyToSetPoint();
         }
 
         // THis function is called to construct a collision-free trajectory for the robot to follow
