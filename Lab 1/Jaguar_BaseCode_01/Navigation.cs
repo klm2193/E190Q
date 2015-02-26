@@ -210,10 +210,10 @@ namespace DrRobot.JaguarControl
                     //WallPositioning();
 
                     // Drive the robot to a desired Point (lab 3)
-                    //FlyToSetPoint();
+                    FlyToSetPoint();
 
                     // Follow the trajectory instead of a desired point (lab 3)
-                    TrackTrajectory();
+                    //TrackTrajectory();
 
                     // Actuate motors based actuateMotorL and actuateMotorR
                     if (jaguarControl.Simulating())
@@ -365,13 +365,13 @@ namespace DrRobot.JaguarControl
             short zeroOutput = 16383;       //sets lower limit to motor signal
             short maxPosOutput = 32767;     //sets upper limit to motor signal
 
-            double K_p = 25;       //PID Constants
-            double K_i = 0.1;
-            double K_d = 1;
+            double K_p = 30; // 25;       //PID Constants
+            double K_i = 4.5;// 0.1;
+            double K_d = 0; //1;
 
-            double K_p_R = 25;       //Only Rotation PID Constants
-            double K_i_R = 0.1;
-            double K_d_R = 1;
+            double K_p_R = 0;// 25;       //Only Rotation PID Constants
+            double K_i_R = 0;// 0.1;
+            double K_d_R = 0;// 1;
 
             double maxErr = 8000 / deltaT;  //sets the maximum value for integration of velocity error
 
@@ -394,13 +394,6 @@ namespace DrRobot.JaguarControl
             // They will be replaced when the actual jaguar is used.
             //motorSignalL = (short)(zeroOutput + desiredRotRateL * 100);// (zeroOutput + u_L);
             //motorSignalR = (short)(zeroOutput - desiredRotRateR * 100);//(zeroOutput - u_R);
-
-            motorSignalL = (short)(zeroOutput + u_L);
-            motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because te encoders count backwards
-
-            motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
-            motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
-
             
             //PID Control for Rotation
             if ((pho < 0.1) && (Math.Abs(deltaAngle) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
@@ -413,7 +406,12 @@ namespace DrRobot.JaguarControl
                 u_L = ((K_p_R * e_L) + (K_i_R * e_sum_L) + (K_d_R * (e_L - e_L_last) / deltaT));
                 u_R = ((K_p_R * e_R) + (K_i_R * e_sum_R) + (K_d_R * (e_R - e_R_last) / deltaT));                
             }
-            
+
+            motorSignalL = (short)(zeroOutput + u_L);
+            motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because te encoders count backwards
+
+            motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
+            motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
         }
 
         // At every iteration of the control loop, this function sends
@@ -582,8 +580,8 @@ namespace DrRobot.JaguarControl
                     desiredV = Kpho * pho;
                     desiredW = (Kalpha * alpha) + (Kbeta * beta);
 
-                    desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * 190);
-                    desiredRotRateL = (short)-(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * 190);
+                    desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * pulsesPerRotation / (2 * Math.PI));
+                    desiredRotRateL = (short)-(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * pulsesPerRotation / (2 * Math.PI));
                 }
             }
 
@@ -599,6 +597,7 @@ namespace DrRobot.JaguarControl
                  desiredRotRateL = (short)-(maxVelocity * 5000 * deltaT);
             }
 
+            
             // Setting the Maximum Velocity
             double VelL = desiredRotRateL * 2 * Math.PI * wheelRadius/pulsesPerRotation;
             double VelR = desiredRotRateR * 2 * Math.PI * wheelRadius/pulsesPerRotation;
@@ -628,6 +627,7 @@ namespace DrRobot.JaguarControl
             //Console.Write("Left Speed: " + (desiredRotRateL * 2 * Math.PI * 0.089/190) + "\n");
             //Console.Write("Right Speed: " + (desiredRotRateR* 2 * Math.PI * 0.089/190) + "\n");
             // ****************** Additional Student Code: End   ************
+            
         }
 
 
