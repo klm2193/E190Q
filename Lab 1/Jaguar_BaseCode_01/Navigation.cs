@@ -365,13 +365,13 @@ namespace DrRobot.JaguarControl
             short zeroOutput = 16383;       //sets lower limit to motor signal
             short maxPosOutput = 32767;     //sets upper limit to motor signal
 
-            double K_p = 30; // 25;       //PID Constants
-            double K_i = 4.5;// 0.1;
-            double K_d = 0; //1;
+            double K_p = 65; // 25;       //PID Constants
+            double K_i = 4.9;// 0.1;
+            double K_d = 250; //0.5
 
-            double K_p_R = 0;// 25;       //Only Rotation PID Constants
-            double K_i_R = 0;// 0.1;
-            double K_d_R = 0;// 1;
+            double K_p_R = 95; // 30;// 25;       //Only Rotation PID Constants
+            double K_i_R = 0; // 4.5;// 0.1;
+            double K_d_R = 375;// 1;
 
             double maxErr = 8000 / deltaT;  //sets the maximum value for integration of velocity error
 
@@ -396,22 +396,28 @@ namespace DrRobot.JaguarControl
             //motorSignalR = (short)(zeroOutput - desiredRotRateR * 100);//(zeroOutput - u_R);
             
             //PID Control for Rotation
-            if ((pho < 0.1) && (Math.Abs(deltaAngle) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
+            if ((pho < 0.1) && (Math.Abs(deltaAngle) < 0.18)) // if the robot reaches a desired distance range and angle, it should stop the motors
             {
                 motorSignalL = 0;
                 motorSignalR = 0;
             }
-            else if ((pho < 0.1) && (Math.Abs(deltaAngle) > 0.09))
+            else if ((pho < 0.1) && (Math.Abs(deltaAngle) > 0.18))
             {
                 u_L = ((K_p_R * e_L) + (K_i_R * e_sum_L) + (K_d_R * (e_L - e_L_last) / deltaT));
                 u_R = ((K_p_R * e_R) + (K_i_R * e_sum_R) + (K_d_R * (e_R - e_R_last) / deltaT));                
             }
 
             motorSignalL = (short)(zeroOutput + u_L);
-            motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because te encoders count backwards
+            motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because the encoders count backwards
 
             motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
+
+            //motorSignalR = -18000;
+            //motorSignalL = 18000;
+
+            //Console.Write("left motor: " + motorSignalL + "\n");
+            //Console.Write("right motor: " + motorSignalR + "\n");
         }
 
         // At every iteration of the control loop, this function sends
@@ -500,6 +506,17 @@ namespace DrRobot.JaguarControl
 
         # region Control Functions
 
+        // This will bound the input angle to be between -PI and +PI
+        private double BoundAngle(double angle)
+        {
+            if (angle > Math.PI)
+                angle = -(2 * Math.PI) + angle;
+            else if (angle < -Math.PI)
+                angle = (2 * Math.PI) + angle;
+
+            return angle;
+        }
+
         // This function is called at every iteration of the control loop
         // It will drive the robot forward or backward to position the robot 
         // 1 meter from the wall.
@@ -543,10 +560,15 @@ namespace DrRobot.JaguarControl
             double alpha = -t + Math.Atan2(deltaY, deltaX);
             double beta = -t - alpha + desiredT;
 
+            /*
             if (alpha > Math.PI)
                 alpha = -(2 * Math.PI) + alpha;
             else if (alpha < -Math.PI)
                 alpha = (2 * Math.PI) + alpha;
+            */
+
+            alpha = BoundAngle(alpha);
+            beta = BoundAngle(beta);
 
             double desiredV;
             double desiredW;
@@ -559,7 +581,7 @@ namespace DrRobot.JaguarControl
                     desiredV = Kpho * pho;
                     desiredW = (Kalpha * alpha) + (Kbeta * beta);
 
-                    desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * pulsesPerRotation / (2 * Math.PI));
+                    desiredRotRateL = (short)(((robotRadius / wheelRadius * desiredW) + (1 / wheelRadius * desiredV)) * pulsesPerRotation / (2 * Math.PI));
                     desiredRotRateR = (short)(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * pulsesPerRotation / (2 * Math.PI));
                 }
 
@@ -580,21 +602,27 @@ namespace DrRobot.JaguarControl
                     desiredV = Kpho * pho;
                     desiredW = (Kalpha * alpha) + (Kbeta * beta);
 
-                    desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / robotRadius * desiredV)) * pulsesPerRotation / (2 * Math.PI));
+                    desiredRotRateR = (short)-(((robotRadius / wheelRadius * desiredW) + (1 / wheelRadius * desiredV)) * pulsesPerRotation / (2 * Math.PI));
                     desiredRotRateL = (short)-(((1 / wheelRadius * desiredV) - (robotRadius / wheelRadius * desiredW)) * pulsesPerRotation / (2 * Math.PI));
                 }
             }
 
 
-            if ((pho < 0.1) && (Math.Abs(deltaT) < 0.09)) // if the robot reaches a desired distance range and angle, it should stop the motors
+            if ((pho < 0.1) && (Math.Abs(deltaT) < 0.18)) // if the robot reaches a desired distance range and angle, it should stop the motors
             {
                  desiredRotRateL = 0;
                  desiredRotRateR = 0;
             }
-            else if ((pho < 0.1) && (Math.Abs(deltaT) > 0.09))
+            else if ((pho < 0.1) && (Math.Abs(deltaT) > 0.18))
             {
                  desiredRotRateR = (short)(maxVelocity * 5000 * deltaT);
                  desiredRotRateL = (short)-(maxVelocity * 5000 * deltaT);
+
+                if (Math.Abs(deltaT) >= Math.PI)
+                {
+                    desiredRotRateR = (short)-(maxVelocity * 5000 * deltaT);
+                    desiredRotRateL = (short)(maxVelocity * 5000 * deltaT);
+                }
             }
 
             
@@ -635,13 +663,15 @@ namespace DrRobot.JaguarControl
         // THis function is called to follow a trajectory constructed by PRMMotionPlanner()
         private void TrackTrajectory()
         {
-            // Following a Straight Line
             /*
+            // Following a Straight Line
             desiredX = x_est + 0.1;
             desiredY = desiredX * 2 + 1;
             desiredT = Math.Atan2(2, 1);
             */
 
+            /*
+            // Following a Circular Path
             if ((x_est < 2) && (!InitialReached))
             {
                 desiredX = 2.2;
@@ -665,6 +695,13 @@ namespace DrRobot.JaguarControl
                 desiredX = 2 * Math.Cos(desiredAngle);  //THIS MIGHT BE WRONG< CHECK IT. OR DESIRED ANGLE
                 desiredY = 2 * Math.Sin(desiredAngle);
             }
+            */
+
+            /*
+            // Following a Sinusoidal Path
+            desiredX = x_est + 0.1;
+            desiredY = Math.Sin(desiredX);
+            */
 
             FlyToSetPoint();
         }
