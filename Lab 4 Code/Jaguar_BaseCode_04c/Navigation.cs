@@ -917,7 +917,8 @@ namespace DrRobot.JaguarControl
 
 
 	        // Set particles in random locations and orientations within environment
-	        for (int i=0; i< numParticles; i++){
+	        for (int i=0; i< numParticles; i++)
+            {
 
 		        // Either set the particles at known start position [0 0 0],  
 		        // or set particles at random locations.

@@ -36,6 +36,12 @@ namespace DrRobot.JaguarControl
             intercepts = new double[numMapSegments];
             segmentSizes = new double[numMapSegments];
 
+            // Format of mapSegmentCorners
+            // x1
+            // y1
+            // x2
+            // y2
+
             mapSegmentCorners[0, 0, 0] = 3.38 + 5.79 + 3.55 / 2;
 	        mapSegmentCorners[0,0,1] = 2.794;
             mapSegmentCorners[0, 1, 0] = -3.38 - 5.79 - 3.55 / 2;
@@ -90,8 +96,8 @@ namespace DrRobot.JaguarControl
                 maxY = Math.Max(maxY, Math.Max(mapSegmentCorners[i,0,1], mapSegmentCorners[i,1,1]));
 		
 		        // Set wall segments to be horizontal
-		        slopes[i] = (mapSegmentCorners[i,0,1]-mapSegmentCorners[i,1,1])/(0.001+mapSegmentCorners[i,0,0]-mapSegmentCorners[i,1,0]);
-		        intercepts[i] = mapSegmentCorners[i,0,1] - slopes[i]*mapSegmentCorners[i,0,0];
+		        slopes[i] = (mapSegmentCorners[i,0,1]-mapSegmentCorners[i,1,1])/(0.001+mapSegmentCorners[i,0,0]-mapSegmentCorners[i,1,0]); //calc of slope will never divide by 0
+		        intercepts[i] = mapSegmentCorners[i,0,1] - slopes[i]*mapSegmentCorners[i,0,0]; //this calculates the y intercept
 
 		        // Set wall segment lengths
 		        segmentSizes[i] = Math.Sqrt(Math.Pow(mapSegmentCorners[i,0,0]-mapSegmentCorners[i,1,0],2)+Math.Pow(mapSegmentCorners[i,0,1]-mapSegmentCorners[i,1,1],2));
@@ -102,14 +108,60 @@ namespace DrRobot.JaguarControl
         // This function is used in your particle filter localization lab. Find 
         // the range measurement to a segment given the ROBOT POSITION (x, y) and 
         // SENSOR ORIENTATION (t)
-        double GetWallDistance(double x, double y, double t, int segment){
+        double GetWallDistance(double x, double y, double t, int segment) //WARNING: Currently this function calculates the wall behind the robot as well, which may be problematic
+        {
+            // ****************** Additional Student Code: Start ************
 
+            double maxDist = 9999;
 
+            //not get infinity from the tangent function
+            if (Math.Abs(t) == Math.PI/2)
+            {
+                t = (Math.PI/2) + 0.001;
+            }
 
+            double m1 = Math.Tan(t); //slope of laser range measurement
+            double m2 = slopes[segment]; //slope of the segment
+            double d; //distance from robot to intersection point
 
+            //the lines are parallel, so there is no intersection
+            if (m1 == m2)
+            {
+                d = maxDist;
+            }
+
+            //the lines have an intersection point
+            else
+            {
+                double xSegment = mapSegmentCorners[segment, 0, 0]; //x value of one corner on the segment
+                double ySegment = mapSegmentCorners[segment, 0, 1]; //y value of the same corner on the segment
+                double intersectionX = (m1 * x - y - m2 * xSegment + ySegment) / (m1 - m2);
+                double intersectionY = ((y/m1)-x-(ySegment/m2)+xSegment)/((1/m1)-(1/m2));
+
+                //Calculating the min and max x and y coordinates for a segment
+                minX = Math.Min(minX, Math.Min(mapSegmentCorners[segment,0,0], mapSegmentCorners[segment,1,0]));
+                minY = Math.Min(minY, Math.Min(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
+                maxX = Math.Max(maxX, Math.Max(mapSegmentCorners[segment,0,0], mapSegmentCorners[segment,1,0]));
+                maxY = Math.Max(maxY, Math.Max(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
+
+                //Angle of the Intersection Point
+                double AngleIntersectionPoint = Math.Atan2(ySegment, xSegment);
+
+                //Making sure that intersection point is within the bounds of the segment and the target is not behind the robot
+                if ((intersectionX > minX) && (intersectionX < maxX) && (intersectionY > minY) && (intersectionY < maxY) && (AngleIntersectionPoint == t))
+                {
+                    d = Math.Sqrt(Math.Pow((x - intersectionX), 2) + Math.Pow((y - intersectionY), 2));
+                }
+
+                else
+                {
+                    d = maxDist;
+                }
+
+            }
 	        // ****************** Additional Student Code: End   ************
 
-	        return 0;
+	        return d;
         }
 
 
@@ -117,7 +169,8 @@ namespace DrRobot.JaguarControl
         // range to the closest wall segment, for a robot located
         // at position x, y with sensor with orientation t.
 
-        public double GetClosestWallDistance(double x, double y, double t){
+        public double GetClosestWallDistance(double x, double y, double t)
+        {
 
 	        double minDist = 6.000;
 
@@ -126,7 +179,11 @@ namespace DrRobot.JaguarControl
 	        // Put code here that loops through segments, calling the
 	        // function GetWallDistance.
 
-
+            for (int segment = 0; segment < numMapSegments; segment++)
+            {
+                double wallDistance = GetWallDistance(x, y, t, segment);
+                minDist = Math.Min(minDist, wallDistance);
+            }
 
 	        // ****************** Additional Student Code: End   ************
 
