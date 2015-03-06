@@ -121,7 +121,7 @@ namespace DrRobot.JaguarControl
             }
 
             double m1 = Math.Tan(t); //slope of laser range measurement
-            double m2 = slopes[segment]; //slope of the segment
+            double m2 = Math.Max(slopes[segment], 0.001); // slope of the segment; don't let it be 0
             double d; //distance from robot to intersection point
 
             //the lines are parallel, so there is no intersection
@@ -145,7 +145,11 @@ namespace DrRobot.JaguarControl
                 maxY = Math.Max(maxY, Math.Max(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
 
                 //Angle of the Intersection Point
-                double AngleIntersectionPoint = Math.Atan2(ySegment, xSegment);
+                double AngleIntersectionPoint = Math.Atan2(intersectionY-y, intersectionX-x);
+
+                //Console.Write("Robot Angle: " + t + "\n");
+                //Console.Write("Intersection Angle: " + AngleIntersectionPoint + "\n");
+                //Console.Write("Angle Difference: " + Math.Abs(t-AngleIntersectionPoint) + "\n");
 
                 //Making sure that intersection point is within the bounds of the segment and the target is not behind the robot
                 if ((intersectionX > minX) && (intersectionX < maxX) && (intersectionY > minY) && (intersectionY < maxY) && (AngleIntersectionPoint == t))

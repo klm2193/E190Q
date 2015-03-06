@@ -82,6 +82,7 @@ namespace DrRobot.JaguarControl
         double desiredAngle = 0;
 
         private String streamPath_;
+        Random rnd = new Random((int)DateTime.Now.Ticks); // seed random number with system time
 
         // PF Variables
         public Map map;
@@ -880,6 +881,29 @@ namespace DrRobot.JaguarControl
 
             //x_est = 0; y_est = 0; t_est = 0; (this was in lab 4)
 
+            for (int i = 0; i < numParticles; i++)
+            {
+                double deltaX = distanceTravelled * Math.Cos(particles[i].t + (double)angleTravelled / (double)2);
+                double deltaY = distanceTravelled * Math.Sin(particles[i].t + (double)angleTravelled / (double)2);
+
+                // Update the actual
+                double xError = 0.1 * deltaX; //from odometry lab
+                double yError = 0.1 * deltaY;  //from odometry lab
+                double tError = -0.11 * angleTravelled; //from odometry lab
+
+                double totalAngle = particles[i].t + angleTravelled + RandomGaussian()*tError;
+
+                particles[i].x += deltaX + RandomGaussian() * xError;
+                particles[i].y += deltaY + RandomGaussian() * yError;
+
+                if (totalAngle > Math.PI)
+                    particles[i].t = -(2 * Math.PI) + totalAngle;
+                else if (totalAngle < -Math.PI) 
+                    particles[i].t = (2 * Math.PI) + totalAngle;
+                else
+                    particles[i].t = totalAngle;
+            }
+
             // This is from Lab 1
             x_est = x;
             y_est = y;
@@ -898,7 +922,7 @@ namespace DrRobot.JaguarControl
 
         void CalculateWeight(int p)
         {
-	        double weight = 0;
+            double weight = 0;
 
 	        // ****************** Additional Student Code: Start ************
 
@@ -942,13 +966,22 @@ namespace DrRobot.JaguarControl
 
 	        // ****************** Additional Student Code: Start ************
 
-	        // Put code here to calculated the position, orientation of 
+	        // Put code here to calculate the position, orientation of 
             // particles[p]. Feel free to use the random.NextDouble() function. 
 	        // It might be helpful to use boundaries defined in the
 	        // Map.cs file (e.g. map.minX)
-	        
 
+            double mapXRange = map.maxX - map.minX;
+            double mapYRange = map.maxY - map.minY;
 
+            // set position and orientation of the given particle
+            
+            particles[p].x = random.NextDouble() * mapXRange + map.minX;
+            particles[p].y = random.NextDouble() * mapYRange + map.minY;
+            double pT = random.NextDouble() * 2 * Math.PI;
+            particles[p].t = BoundAngle(pT);
+
+         
 
             // ****************** Additional Student Code: End   ************
         }
