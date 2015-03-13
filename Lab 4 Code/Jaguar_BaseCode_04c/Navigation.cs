@@ -881,27 +881,49 @@ namespace DrRobot.JaguarControl
 
             //x_est = 0; y_est = 0; t_est = 0; (this was in lab 4)
 
+            double totalWeight = 0;
+
             for (int i = 0; i < numParticles; i++)
             {
                 double deltaX = distanceTravelled * Math.Cos(particles[i].t + (double)angleTravelled / (double)2);
                 double deltaY = distanceTravelled * Math.Sin(particles[i].t + (double)angleTravelled / (double)2);
 
                 // Update the actual
-                double xError = 0.1 * deltaX; //from odometry lab
-                double yError = 0.1 * deltaY;  //from odometry lab
-                double tError = -0.11 * angleTravelled; //from odometry lab
+                double xError = 1 * deltaX; //from odometry lab
+                double yError = 1 * deltaY;  //from odometry lab
+                double tError = -1.1 * angleTravelled; //from odometry lab
 
-                double totalAngle = particles[i].t + angleTravelled + RandomGaussian()*tError;
+                double totalAngle = particles[i].t + angleTravelled + RandomGaussian() * tError;
 
-                particles[i].x += deltaX + RandomGaussian() * xError;
-                particles[i].y += deltaY + RandomGaussian() * yError;
+                propagatedParticles[i].x += deltaX + RandomGaussian() * xError;
+                propagatedParticles[i].y += deltaY + RandomGaussian() * yError;
 
                 if (totalAngle > Math.PI)
-                    particles[i].t = -(2 * Math.PI) + totalAngle;
-                else if (totalAngle < -Math.PI) 
-                    particles[i].t = (2 * Math.PI) + totalAngle;
+                    propagatedParticles[i].t = -(2 * Math.PI) + totalAngle;
+                else if (totalAngle < -Math.PI)
+                    propagatedParticles[i].t = (2 * Math.PI) + totalAngle;
                 else
-                    particles[i].t = totalAngle;
+                    propagatedParticles[i].t = totalAngle;
+
+                CalculateWeight(i);
+                totalWeight += propagatedParticles[i].w;
+            }
+
+            // Resampling the Particle Matrix
+            for (int i = 0; i < numParticles; i++)
+            {
+                if (propagatedParticles[i].w < 0.25)
+                {
+                }
+                else if (propagatedParticles[i].w < 0.5)
+                {
+                }
+                else if (propagatedParticles[i].w < 0.75)
+                {
+                }
+                else if (propagatedParticles[i].w <= 1.0)
+                {
+                }
             }
 
             // This is from Lab 1
@@ -924,6 +946,28 @@ namespace DrRobot.JaguarControl
         {
             double weight = 0;
 
+            double laserSD = 0.03;
+            double xParticle = propagatedParticles[p].x;
+            double yParticle = propagatedParticles[p].y;
+            double tParticle = propagatedParticles[p].t;
+
+            double[] particleAngleArray = { BoundAngle(t-1.05), t, BoundAngle(t+1.05) };
+            int[] nominalAngleArray = { 53, 113, 173 };
+
+            for (int i = 0; i < nominalAngleArray.Length; i++)
+            {
+                double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
+
+                int angle = nominalAngleArray[i]; // angle from laser scanner
+                double nominalLaserDist = LaserData[angle] / (double)1000; //converts laser data to meters
+
+                double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
+                weight += angleWeight;
+            }
+
+            weight = weight / nominalAngleArray.Length;
+            propagatedParticles[p].w = weight;
+
 	        // ****************** Additional Student Code: Start ************
 
 	        // Put code here to calculated weight. Feel free to use the
@@ -939,11 +983,9 @@ namespace DrRobot.JaguarControl
 
         void InitializeParticles() {
 
-
 	        // Set particles in random locations and orientations within environment
 	        for (int i=0; i< numParticles; i++)
             {
-
 		        // Either set the particles at known start position [0 0 0],  
 		        // or set particles at random locations.
 

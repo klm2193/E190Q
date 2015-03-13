@@ -1237,5 +1237,10 @@ namespace DrRobot.JaguarControl
 
         # endregion
 
+        private void checkBoxKnownStart_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

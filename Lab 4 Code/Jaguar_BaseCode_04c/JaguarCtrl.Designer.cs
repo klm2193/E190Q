@@ -612,7 +612,7 @@
             this.trackBarZoom.Minimum = 1;
             this.trackBarZoom.Name = "trackBarZoom";
             this.trackBarZoom.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarZoom.Size = new System.Drawing.Size(45, 393);
+            this.trackBarZoom.Size = new System.Drawing.Size(42, 393);
             this.trackBarZoom.TabIndex = 30;
             this.trackBarZoom.Value = 50;
             this.trackBarZoom.Scroll += new System.EventHandler(this.trackBarZoom_Scroll);
@@ -737,7 +737,7 @@
             this.trackBarTurnPower.Maximum = 100;
             this.trackBarTurnPower.Minimum = -100;
             this.trackBarTurnPower.Name = "trackBarTurnPower";
-            this.trackBarTurnPower.Size = new System.Drawing.Size(200, 45);
+            this.trackBarTurnPower.Size = new System.Drawing.Size(200, 42);
             this.trackBarTurnPower.TabIndex = 18;
             this.trackBarTurnPower.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBarTurnPower.ValueChanged += new System.EventHandler(this.trackBarTurnPower_ValueChanged);
@@ -749,7 +749,7 @@
             this.trackBarForwardPower.Maximum = 100;
             this.trackBarForwardPower.Minimum = -100;
             this.trackBarForwardPower.Name = "trackBarForwardPower";
-            this.trackBarForwardPower.Size = new System.Drawing.Size(200, 45);
+            this.trackBarForwardPower.Size = new System.Drawing.Size(200, 42);
             this.trackBarForwardPower.TabIndex = 17;
             this.trackBarForwardPower.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBarForwardPower.ValueChanged += new System.EventHandler(this.trackBarForwardPower_ValueChanged);
@@ -1033,6 +1033,7 @@
             this.checkBoxKnownStart.TabIndex = 73;
             this.checkBoxKnownStart.Text = "Known Start Loc";
             this.checkBoxKnownStart.UseVisualStyleBackColor = true;
+            this.checkBoxKnownStart.CheckedChanged += new System.EventHandler(this.checkBoxKnownStart_CheckedChanged_1);
             this.checkBoxKnownStart.CheckStateChanged += new System.EventHandler(this.checkBoxKnownStart_CheckedChanged);
             // 
             // JaguarCtrl
