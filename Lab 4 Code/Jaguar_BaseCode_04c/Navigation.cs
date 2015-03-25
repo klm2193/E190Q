@@ -157,6 +157,10 @@ namespace DrRobot.JaguarControl
             desiredY = 0;// initialY;
             desiredT = 0;// initialT;
 
+            initialX = 0; // Defining the initial values
+            initialY = 0;
+            initialT = 0;
+
             // Reset Localization Variables
             wheelDistanceR = 0;
             wheelDistanceL = 0;
@@ -192,7 +196,7 @@ namespace DrRobot.JaguarControl
             GetFirstEncoderMeasurements();
             CalibrateIMU();
             Initialize();
-            InitializeParticles(); //places particles in proper location
+            //InitializeParticles(); //places particles in proper location
         }
         #endregion
 
@@ -237,7 +241,10 @@ namespace DrRobot.JaguarControl
                 
 
                 // Estimate the global state of the robot -x_est, y_est, t_est (lab 4)
-                LocalizeEstWithParticleFilter();
+                if ((diffEncoderPulseL != 0) && (diffEncoderPulseR != 0))
+                {
+                    LocalizeEstWithParticleFilter();
+                }
 
 
                 // If using the point tracker, call the function
@@ -887,18 +894,23 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double deltaX = distanceTravelled * Math.Cos(particles[i].t + (double)angleTravelled / (double)2);
-                double deltaY = distanceTravelled * Math.Sin(particles[i].t + (double)angleTravelled / (double)2);
+                double wheelLError = 0.01;
+                double wheelRError = 0.01;
 
-                // Update the actual
-                double xError = 1 * deltaX; //from odometry lab
-                double yError = 1 * deltaY + 0.025 * deltaX;  //from odometry lab
-                double tError = -1.1 * angleTravelled; //from odometry lab
+                double wheelDistanceLRand = wheelDistanceL + RandomGaussian() * wheelLError;
+                double wheelDistanceRRand = wheelDistanceR + RandomGaussian() * wheelRError;
 
-                double totalAngle = particles[i].t + angleTravelled + RandomGaussian() * tError;
+                double distanceTravelledGaussian = (double)((wheelDistanceLRand + wheelDistanceRRand) / 2.0);
+                double angleTravelledGaussian = (double)((wheelDistanceRRand - wheelDistanceLRand) / (2.0 * robotRadius));
 
-                propagatedParticles[i].x += deltaX + RandomGaussian() * xError;
-                propagatedParticles[i].y += deltaY + RandomGaussian() * yError;
+
+                double deltaX = distanceTravelledGaussian * Math.Cos(particles[i].t + (double)angleTravelledGaussian / (double)2);
+                double deltaY = distanceTravelledGaussian * Math.Sin(particles[i].t + (double)angleTravelledGaussian / (double)2);
+
+                propagatedParticles[i].x = particles[i].x + deltaX;
+                propagatedParticles[i].y = particles[i].y + deltaY;
+
+                double totalAngle = particles[i].t + angleTravelledGaussian;
 
                 if (totalAngle > Math.PI)
                     propagatedParticles[i].t = -(2 * Math.PI) + totalAngle;
@@ -914,19 +926,19 @@ namespace DrRobot.JaguarControl
                 // Approximate Method to generate the Weighted Particle List
                 if (propagatedParticles[i].w < 0.25)
                 {
-                    numCopies = 10;
+                    numCopies = 1;
                 }
                 else if (propagatedParticles[i].w < 0.5)
                 {
-                    numCopies = 20;
+                    numCopies = 2;
                 }
                 else if (propagatedParticles[i].w < 0.75)
                 {
-                    numCopies = 300;
+                    numCopies = 3;
                 }
                 else if (propagatedParticles[i].w <= 1.0)
                 {
-                    numCopies = 400;
+                    numCopies = 4;
                 }
 
                 for (int j = 0; j < numCopies; j++)
@@ -946,7 +958,7 @@ namespace DrRobot.JaguarControl
             for (int i = 0; i < numParticles; i++)
             {
                 int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
-                particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
+                particles[i] = propagatedParticles[i];// propagatedParticles[weightedParticles[sampledParticle]];
 
                 totalX = particles[i].x + totalX;
                 totalY = particles[i].y + totalY;
@@ -980,19 +992,20 @@ namespace DrRobot.JaguarControl
         {
             double weight = 0;
 
-            double laserSD = 1; //0.03;
+            double laserSD = 1;
             double xParticle = propagatedParticles[p].x;
             double yParticle = propagatedParticles[p].y;
             double tParticle = propagatedParticles[p].t;
 
-            double[] particleAngleArray = { BoundAngle(t-1.05), t, BoundAngle(t+1.05) };
-            int[] nominalAngleArray = { 53, 113, 173 };
+            //double[] particleAngleArray = { BoundAngle(t+1.05), BoundAngle(t+0.52), t, BoundAngle(t-0.52), BoundAngle(t-1.05) };
+            int[] nominalAngleArray = { 54, 84, 114, 144, 174 };
 
             for (int i = 0; i < nominalAngleArray.Length; i++)
             {
-                double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
-
                 int angle = nominalAngleArray[i]; // angle from laser scanner
+                //double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
+
+                double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, tParticle + laserAngles[angle] - 1.57);
                 double nominalLaserDist = LaserData[angle] / (double)1000; //converts laser data to meters
 
                 double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
@@ -1067,9 +1080,9 @@ namespace DrRobot.JaguarControl
 
         // For particle p, this function will select a start predefined position. 
         void SetStartPos(int p){
-	        particles[p].x = initialX;
-	        particles[p].y = initialY;
-	        particles[p].t = initialT;
+	        particles[p].x = 0; //initialX;
+	        particles[p].y = 0; //initialY;
+            particles[p].t = 0; //initialT;
         }
 
 
