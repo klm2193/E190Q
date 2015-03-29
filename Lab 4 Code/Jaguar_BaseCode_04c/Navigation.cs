@@ -920,7 +920,7 @@ namespace DrRobot.JaguarControl
                 propagatedParticles[i].y = particles[i].y + deltaY;
 
                 double totalAngle = particles[i].t + angleTravelledGaussian;
-                 
+                
 
                 /*
                 propagatedParticles[i].x = x;
@@ -1018,12 +1018,12 @@ namespace DrRobot.JaguarControl
         {
             double weight = 0;
 
-            double laserSD = 1;
+            double laserSD = 0.03;
             double xParticle = propagatedParticles[p].x;
             double yParticle = propagatedParticles[p].y;
             double tParticle = propagatedParticles[p].t;
 
-            int[] nominalAngleArray = {54, 84, 114, 144, 174 };
+            int[] nominalAngleArray = {54, 66, 84, 99, 114, 129, 144, 159, 174 };
 
             for (int i = 0; i < nominalAngleArray.Length; i++)
             {
@@ -1031,7 +1031,7 @@ namespace DrRobot.JaguarControl
                 //double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
 
                 double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, tParticle - 1.57 + laserAngles[angle]);
-                double robotLaserDist = map.GetClosestWallDistance(x, y, BoundAngle(t - 1.57 + laserAngles[angle]));
+                //double robotLaserDist = map.GetClosestWallDistance(x, y, BoundAngle(t - 1.57 + laserAngles[angle]));
                 double nominalLaserDist = LaserData[angle] / (double)1000; //converts laser data to meters
 
                 double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
