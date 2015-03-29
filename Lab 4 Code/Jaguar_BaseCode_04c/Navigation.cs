@@ -958,7 +958,8 @@ namespace DrRobot.JaguarControl
             for (int i = 0; i < numParticles; i++)
             {
                 int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
-                particles[i] = propagatedParticles[i];// propagatedParticles[weightedParticles[sampledParticle]];
+                //particles[i] = propagatedParticles[i];
+                particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
 
                 totalX = particles[i].x + totalX;
                 totalY = particles[i].y + totalY;
@@ -1000,17 +1001,26 @@ namespace DrRobot.JaguarControl
             //double[] particleAngleArray = { BoundAngle(t+1.05), BoundAngle(t+0.52), t, BoundAngle(t-0.52), BoundAngle(t-1.05) };
             int[] nominalAngleArray = { 54, 84, 114, 144, 174 };
 
-            for (int i = 0; i < nominalAngleArray.Length; i++)
+            if (newLaserData)
             {
-                int angle = nominalAngleArray[i]; // angle from laser scanner
-                //double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
+                for (int i = 0; i < nominalAngleArray.Length; i++)
+                {
+                    int angle = nominalAngleArray[i]; // angle from laser scanner
+                    //double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
 
-                double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, tParticle + laserAngles[angle] - 1.57);
-                double nominalLaserDist = LaserData[angle] / (double)1000; //converts laser data to meters
+                    double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, tParticle - 1.57 + laserAngles[angle]);
+                    double robotLaserDist = map.GetClosestWallDistance(x, y, BoundAngle(t - 1.57 + laserAngles[angle]));
+                    double nominalLaserDist = LaserData[angle] / (double)1000; //converts laser data to meters
 
-                double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
-                weight += angleWeight;
-            }
+                    double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
+                    weight += angleWeight;
+                }
+
+                weight = weight / nominalAngleArray.Length;
+                propagatedParticles[p].w = weight;
+
+                newLaserData = false;
+            } 
 
             weight = weight / nominalAngleArray.Length;
             propagatedParticles[p].w = weight;
