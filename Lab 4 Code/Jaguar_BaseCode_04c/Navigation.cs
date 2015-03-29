@@ -385,7 +385,7 @@ namespace DrRobot.JaguarControl
 
                 // Get most recent laser scanner measurements
                 laserCounter = laserCounter + deltaT;
-                if (laserCounter >= 2000)
+                if (laserCounter >= 1000)//2000)
                 {
                     for (int i = 0; i < LaserData.Length; i=i+laserStepSize)
                     {
@@ -902,8 +902,8 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0.01;
-                double wheelRError = 0.01;
+                double wheelLError = 0.02;
+                double wheelRError = 0.02;
 
                 double wheelDistanceLRand = wheelDistanceL + RandomGaussian() * wheelLError;
                 double wheelDistanceRRand = wheelDistanceR + RandomGaussian() * wheelRError;
