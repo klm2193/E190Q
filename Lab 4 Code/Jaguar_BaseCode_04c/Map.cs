@@ -137,6 +137,8 @@ namespace DrRobot.JaguarControl
                 double ySegment1 = mapSegmentCorners[segment, 0, 1]; // y value of end 1 on segment
                 double xSegment2 = mapSegmentCorners[segment, 1, 0]; // x value of end 2 on segment
                 double ySegment2 = mapSegmentCorners[segment, 1, 1]; // y value of end 2 on segment
+                double intersectionX = (m1 * x - y - m2 * xSegment + ySegment) / (m1 - m2);
+                double intersectionY = ((y/m1)-x-(ySegment/m2)+xSegment)/((1/m1)-(1/m2));
 
                 // calculate x and y intersection points
                 double intersectionX = (m1 * x - y - m2 * xSegment1 + ySegment1) / (m1 - m2);
@@ -150,7 +152,7 @@ namespace DrRobot.JaguarControl
                 minY = Math.Min(minY, Math.Min(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
                 maxX = Math.Max(maxX, Math.Max(mapSegmentCorners[segment,0,0], mapSegmentCorners[segment,1,0]));
                 maxY = Math.Max(maxY, Math.Max(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
-                */
+                 */
 
                 // Angle of the Intersection Point
                 double AngleIntersectionPoint = Math.Atan2(intersectionY-y, intersectionX-x);
