@@ -133,26 +133,33 @@ namespace DrRobot.JaguarControl
             //the lines have an intersection point
             else
             {
-                double xSegment = mapSegmentCorners[segment, 0, 0]; //x value of one corner on the segment
-                double ySegment = mapSegmentCorners[segment, 0, 1]; //y value of the same corner on the segment
-                double intersectionX = (m1 * x - y - m2 * xSegment + ySegment) / (m1 - m2);
-                double intersectionY = ((y/m1)-x-(ySegment/m2)+xSegment)/((1/m1)-(1/m2));
+                double xSegment1 = mapSegmentCorners[segment, 0, 0]; // x value of end 1 on segment
+                double ySegment1 = mapSegmentCorners[segment, 0, 1]; // y value of end 1 on segment
+                double xSegment2 = mapSegmentCorners[segment, 1, 0]; // x value of end 2 on segment
+                double ySegment2 = mapSegmentCorners[segment, 1, 1]; // y value of end 2 on segment
 
-                //Calculating the min and max x and y coordinates for a segment
+                // calculate x and y intersection points
+                double intersectionX = (m1 * x - y - m2 * xSegment1 + ySegment1) / (m1 - m2);
+                double intersectionY = ((y/m1)-x-(ySegment1/m2)+xSegment1)/((1/m1)-(1/m2));
+
+                double segmentLength = Math.Sqrt(Math.Pow((xSegment1 - xSegment2), 2) + Math.Pow((ySegment1 - ySegment2), 2));
+
+                // Calculating the min and max x and y coordinates for a segment
+                /*
                 minX = Math.Min(minX, Math.Min(mapSegmentCorners[segment,0,0], mapSegmentCorners[segment,1,0]));
                 minY = Math.Min(minY, Math.Min(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
                 maxX = Math.Max(maxX, Math.Max(mapSegmentCorners[segment,0,0], mapSegmentCorners[segment,1,0]));
                 maxY = Math.Max(maxY, Math.Max(mapSegmentCorners[segment,0,1], mapSegmentCorners[segment,1,1]));
+                */
 
-                //Angle of the Intersection Point
+                // Angle of the Intersection Point
                 double AngleIntersectionPoint = Math.Atan2(intersectionY-y, intersectionX-x);
 
-                //Console.Write("Robot Angle: " + t + "\n");
-                //Console.Write("Intersection Angle: " + AngleIntersectionPoint + "\n");
-                //Console.Write("Angle Difference: " + Math.Abs(t-AngleIntersectionPoint) + "\n");
+                double deltaL = Math.Sqrt(Math.Pow((intersectionX - xSegment1), 2) + Math.Pow((intersectionY - ySegment1), 2));
+                double deltaR = Math.Sqrt(Math.Pow((intersectionX - xSegment2), 2) + Math.Pow((intersectionY - ySegment2), 2));
 
                 //Making sure that intersection point is within the bounds of the segment and the target is not behind the robot
-                if ((intersectionX > minX) && (intersectionX < maxX) && (intersectionY > minY) && (intersectionY < maxY) && (AngleIntersectionPoint == t))
+                if ((Math.Max(deltaL, deltaR) < segmentLength) && (Math.Abs(AngleIntersectionPoint - t) > 0.1))
                 {
                     d = Math.Sqrt(Math.Pow((x - intersectionX), 2) + Math.Pow((y - intersectionY), 2));
                 }
@@ -161,6 +168,9 @@ namespace DrRobot.JaguarControl
                 {
                     d = maxDist;
                 }
+
+                double dummyD = d;
+                dummyD += dummyD;
 
             }
 	        // ****************** Additional Student Code: End   ************

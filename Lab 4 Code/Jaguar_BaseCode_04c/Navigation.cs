@@ -99,6 +99,10 @@ namespace DrRobot.JaguarControl
         private int laserCounter;
         private int laserStepSize = 3;
 
+        double laserX;
+        double laserY;
+        double laserT;
+
         public class Particle
         {
             public double x, y, t, w;
@@ -145,7 +149,7 @@ namespace DrRobot.JaguarControl
             // Initialize state estimates
             x = 0;//initialX;
             y = 0;//initialY;
-            t = 0;//initialT;
+            t = 1.57;//initialT;
 
             // Initialize state estimates
             x_est = 0;//initialX;
@@ -389,6 +393,10 @@ namespace DrRobot.JaguarControl
                     }
                     laserCounter = 0;
                     newLaserData = true;
+
+                    laserX = x;
+                    laserY = y;
+                    laserT = t;
                 }
             }
             else
@@ -907,10 +915,16 @@ namespace DrRobot.JaguarControl
                 double deltaX = distanceTravelledGaussian * Math.Cos(particles[i].t + (double)angleTravelledGaussian / (double)2);
                 double deltaY = distanceTravelledGaussian * Math.Sin(particles[i].t + (double)angleTravelledGaussian / (double)2);
 
+                /*
                 propagatedParticles[i].x = particles[i].x + deltaX;
                 propagatedParticles[i].y = particles[i].y + deltaY;
 
                 double totalAngle = particles[i].t + angleTravelledGaussian;
+                 * */
+
+                propagatedParticles[i].x = x;
+                propagatedParticles[i].y = y;
+                double totalAngle = t;
 
                 if (totalAngle > Math.PI)
                     propagatedParticles[i].t = -(2 * Math.PI) + totalAngle;
@@ -999,7 +1013,7 @@ namespace DrRobot.JaguarControl
             double tParticle = propagatedParticles[p].t;
 
             //double[] particleAngleArray = { BoundAngle(t+1.05), BoundAngle(t+0.52), t, BoundAngle(t-0.52), BoundAngle(t-1.05) };
-            int[] nominalAngleArray = { 54, 84, 114, 144, 174 };
+            int[] nominalAngleArray = {114};// 54, 84, 114, 144, 174 };
 
             if (newLaserData)
             {
@@ -1014,12 +1028,27 @@ namespace DrRobot.JaguarControl
 
                     double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
                     weight += angleWeight;
+
+                    if (Math.Abs(particleLaserDist - nominalLaserDist) > 0.1)
+                    {
+                        double xDiff = x - laserX;
+                        double yDiff = y - laserY;
+                        double tDiff = t - laserT;
+
+                        double partlaserdist = map.GetClosestWallDistance(x, y, BoundAngle(t - 1.57 + laserAngles[angle]));
+                        double laserdist = map.GetClosestWallDistance(laserX, laserY, BoundAngle(laserT - 1.57 + laserAngles[angle]));
+
+                        double addition = xDiff + yDiff + tDiff + partlaserdist + laserdist;
+                        addition += addition;
+                    }
                 }
 
                 weight = weight / nominalAngleArray.Length;
                 propagatedParticles[p].w = weight;
 
                 newLaserData = false;
+
+                
             } 
 
             weight = weight / nominalAngleArray.Length;
@@ -1092,7 +1121,7 @@ namespace DrRobot.JaguarControl
         void SetStartPos(int p){
 	        particles[p].x = 0; //initialX;
 	        particles[p].y = 0; //initialY;
-            particles[p].t = 0; //initialT;
+            particles[p].t = 1.57; //initialT;
         }
 
 
