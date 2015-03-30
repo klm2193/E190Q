@@ -1018,7 +1018,7 @@ namespace DrRobot.JaguarControl
         {
             double weight = 0;
 
-            double laserSD = 0.03;
+            double laserSD = 0.3;
             double xParticle = propagatedParticles[p].x;
             double yParticle = propagatedParticles[p].y;
             double tParticle = propagatedParticles[p].t;
