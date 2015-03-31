@@ -902,8 +902,8 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0;// 0.02;
-                double wheelRError = 0;// 0.02;
+                double wheelLError = 0.02;
+                double wheelRError = 0.02;
 
                 double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
@@ -941,11 +941,15 @@ namespace DrRobot.JaguarControl
 
             
 
-            if (newLaserData)
-            {
+           /* if (newLaserData)
+            {*/
                 for (int i = 0; i < numParticles; i++)
                 {
-                    CalculateWeight(i);
+                    if (newLaserData)
+                    {
+                        CalculateWeight(i);
+                        newLaserData = false;
+                    }
 
                     int numCopies = 0;
 
@@ -987,12 +991,39 @@ namespace DrRobot.JaguarControl
                     int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
                     //int sampledParticle = (int)(random.NextInt() * weightedParticles.Count);
                     //particles[i] = propagatedParticles[i];
-                    particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
+                    //particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
                     //particles[i] = propagatedParticles[weightedParticles[i]];
+                    
+                    
+                    particles[i].x = propagatedParticles[weightedParticles[sampledParticle]].x;
+                    particles[i].y = propagatedParticles[weightedParticles[sampledParticle]].y;
+                    particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
+                    particles[i].w = propagatedParticles[weightedParticles[sampledParticle]].w;
+                    
+                    /*
+                    double xParticle = propagatedParticles[i].x;
+                    double yParticle = propagatedParticles[i].y;
+                    double tParticle = propagatedParticles[i].t;
+                    double wParticle = propagatedParticles[i].w;
 
-                    Particle sampled = propagatedParticles[weightedParticles[sampledParticle]];
+
+                    particles[i].x = xParticle;
+                    particles[i].y = yParticle;
+                    particles[i].t = tParticle;
+                    particles[i].w = wParticle;
+                     */
+                    
+                    /*
+                    particles[i].x = propagatedParticles[i].x;
+                    particles[i].y = propagatedParticles[i].y;
+                    particles[i].t = propagatedParticles[i].t;
+                    particles[i].w = propagatedParticles[i].w;
+                     */
+                    
+                    
+                    //Particle sampled = propagatedParticles[weightedParticles[sampledParticle]];
                     //Particle sampled = propagatedParticles[i];
-
+                    /*
                     double x1 = 0;
 
                     if ((Math.Abs(sampled.x - x) > 0.01) || (Math.Abs(sampled.y - y) > 0.01))
@@ -1001,6 +1032,7 @@ namespace DrRobot.JaguarControl
                     }
 
                     x1 += 1;
+                     * */
 
                     totalX = particles[i].x + totalX;
                     totalY = particles[i].y + totalY;
@@ -1019,8 +1051,8 @@ namespace DrRobot.JaguarControl
                 y_est = totalY / (double)numParticles;
                 t_est = Math.Atan2(totalTImag, totalTReal);
 
-                newLaserData = false;
-            }
+              //  newLaserData = false;
+            //}
             
         }
 
