@@ -186,7 +186,7 @@ namespace DrRobot.JaguarControl
         public double GetClosestWallDistance(double x, double y, double t)
         {
 
-	        double minDist = 6.000;
+            double minDist = 9999;// 6.000;
 
 	        // ****************** Additional Student Code: Start ************
 
@@ -202,6 +202,27 @@ namespace DrRobot.JaguarControl
 	        // ****************** Additional Student Code: End   ************
 
 	        return minDist;
+        }
+
+        public double GetClosestWallDistanceSimRobot(double x, double y, double t)
+        {
+
+            double minDist = 6.000;
+
+            // ****************** Additional Student Code: Start ************
+
+            // Put code here that loops through segments, calling the
+            // function GetWallDistance.
+
+            for (int segment = 0; segment < numMapSegments; segment++)
+            {
+                double wallDistance = GetWallDistance(x, y, t, segment);
+                minDist = Math.Min(minDist, wallDistance);
+            }
+
+            // ****************** Additional Student Code: End   ************
+
+            return minDist;
         }
 
 
