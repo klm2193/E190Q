@@ -385,7 +385,7 @@ namespace DrRobot.JaguarControl
 
                 // Get most recent laser scanner measurements
                 laserCounter = laserCounter + deltaT;
-                if (laserCounter >= 1000)//2000)
+                if (laserCounter >= 500)//2000)
                 {
                     for (int i = 0; i < LaserData.Length; i=i+laserStepSize)
                     {
@@ -902,24 +902,25 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0.02;
-                double wheelRError = 0.02;
+                double wheelLError = 0;// 0.02;
+                double wheelRError = 0;// 0.02;
 
-                double wheelDistanceLRand = wheelDistanceL + RandomGaussian() * wheelLError;
-                double wheelDistanceRRand = wheelDistanceR + RandomGaussian() * wheelRError;
+                double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
+                double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
 
                 double distanceTravelledGaussian = (double)((wheelDistanceLRand + wheelDistanceRRand) / 2.0);
                 double angleTravelledGaussian = (double)((wheelDistanceRRand - wheelDistanceLRand) / (2.0 * robotRadius));
 
 
-                double deltaX = distanceTravelledGaussian * Math.Cos(particles[i].t + (double)angleTravelledGaussian / (double)2);
-                double deltaY = distanceTravelledGaussian * Math.Sin(particles[i].t + (double)angleTravelledGaussian / (double)2);
+                double deltaXParticle = distanceTravelledGaussian * Math.Cos(particles[i].t + (double)angleTravelledGaussian / (double)2);
+                double deltaYParticle = distanceTravelledGaussian * Math.Sin(particles[i].t + (double)angleTravelledGaussian / (double)2);
 
                 
-                propagatedParticles[i].x = particles[i].x + deltaX;
-                propagatedParticles[i].y = particles[i].y + deltaY;
+                propagatedParticles[i].x = particles[i].x + deltaXParticle;
+                propagatedParticles[i].y = particles[i].y + deltaYParticle;
 
                 double totalAngle = particles[i].t + angleTravelledGaussian;
+
                 
 
                 /*
@@ -936,6 +937,9 @@ namespace DrRobot.JaguarControl
                     propagatedParticles[i].t = totalAngle;
 
             }
+
+
+            
 
             if (newLaserData)
             {
@@ -976,12 +980,27 @@ namespace DrRobot.JaguarControl
                 double TReal;
                 double TImag;
 
+
                 // Resampling the Particle List
                 for (int i = 0; i < numParticles; i++)
                 {
                     int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
+                    //int sampledParticle = (int)(random.NextInt() * weightedParticles.Count);
                     //particles[i] = propagatedParticles[i];
                     particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
+                    //particles[i] = propagatedParticles[weightedParticles[i]];
+
+                    Particle sampled = propagatedParticles[weightedParticles[sampledParticle]];
+                    //Particle sampled = propagatedParticles[i];
+
+                    double x1 = 0;
+
+                    if ((Math.Abs(sampled.x - x) > 0.01) || (Math.Abs(sampled.y - y) > 0.01))
+                    {
+                        x1 = 5;
+                    }
+
+                    x1 += 1;
 
                     totalX = particles[i].x + totalX;
                     totalY = particles[i].y + totalY;
@@ -1002,10 +1021,7 @@ namespace DrRobot.JaguarControl
 
                 newLaserData = false;
             }
-
-
-            // ****************** Additional Student Code: End   ************
-
+            
         }
 
         // Particle filters work by setting the weight associated with each
@@ -1034,15 +1050,26 @@ namespace DrRobot.JaguarControl
                 //double robotLaserDist = map.GetClosestWallDistance(x, y, BoundAngle(t - 1.57 + laserAngles[angle]));
                 double nominalLaserDist = LaserData[angle] / (double)1000; //converts laser data to meters
 
-                double angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
-                weight += angleWeight;
+                double angleWeight;
+
+                if ((particleLaserDist == 6) || (nominalLaserDist == 6))
+                {
+                    angleWeight = 0;
+                }
+
+                else
+                {
+                    angleWeight = Math.Exp(-0.5 * (Math.Pow((particleLaserDist - nominalLaserDist) / laserSD, 2.0)));
+                }
+
+                weight *= angleWeight;
 
                 if (Math.Abs(particleLaserDist - nominalLaserDist) > 0.1)
                 {
                     double xDiff = x - laserX;
                     double yDiff = y - laserY;
                     double tDiff = t - laserT;
-
+                    
                     double partlaserdist = map.GetClosestWallDistance(x, y, BoundAngle(t - 1.57 + laserAngles[angle]));
                     double laserdist = map.GetClosestWallDistance(laserX, laserY, BoundAngle(laserT - 1.57 + laserAngles[angle]));
 
@@ -1051,7 +1078,7 @@ namespace DrRobot.JaguarControl
                 }
             }
 
-            weight = weight / nominalAngleArray.Length;
+            //weight = weight / nominalAngleArray.Length;
             propagatedParticles[p].w = weight;
 
 
