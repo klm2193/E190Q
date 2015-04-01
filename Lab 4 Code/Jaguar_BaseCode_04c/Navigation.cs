@@ -247,7 +247,7 @@ namespace DrRobot.JaguarControl
                 
 
                 // Estimate the global state of the robot -x_est, y_est, t_est (lab 4)
-                if ((diffEncoderPulseL != 0) && (diffEncoderPulseR != 0))
+                if ((diffEncoderPulseL != 0) || (diffEncoderPulseR != 0))
                 {
                     LocalizeEstWithParticleFilter();
                 }
@@ -904,28 +904,28 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0.01;
-                double wheelRError = 0.01;
+                double wheelLError = 0.5;
+                double wheelRError = 0.5;
 
                 //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
 
-                double wheelDistanceLRand = gauss(wheelDistanceL, wheelLError);
-                double wheelDistanceRRand = gauss(wheelDistanceR, wheelRError);
+                double wheelDistanceLRand = gauss(wheelDistanceL, wheelLError*wheelDistanceL);
+                double wheelDistanceRRand = gauss(wheelDistanceR, wheelRError*wheelDistanceR);
 
                 double distanceTravelledGaussian = (double)((wheelDistanceLRand + wheelDistanceRRand) / 2.0);
                 double angleTravelledGaussian = (double)((wheelDistanceRRand - wheelDistanceLRand) / (2.0 * robotRadius));
       
 
                 double deltaXParticle = distanceTravelledGaussian * Math.Cos(particles[i].t + (double)angleTravelledGaussian / (double)2);
-                double deltaYParticle = distanceTravelledGaussian * Math.Sin(particles[i].t + (double)angleTravelledGaussian / (double)2);
+                double deltaYParticle = distanceTravelledGaussian * Math.Sin(particles[i].t + angleTravelledGaussian / 2.0);
 
                 
                 propagatedParticles[i].x = particles[i].x + deltaXParticle;
                 propagatedParticles[i].y = particles[i].y + deltaYParticle;
 
-                double totalAngle = particles[i].t + angleTravelledGaussian;
                 
+                double totalAngle = particles[i].t + angleTravelledGaussian;
                 
 
                 /*
@@ -934,13 +934,14 @@ namespace DrRobot.JaguarControl
                 double totalAngle = t;
                  * */
                 
-
+                
                 if (totalAngle > Math.PI)
                     propagatedParticles[i].t = -(2 * Math.PI) + totalAngle;
                 else if (totalAngle < -Math.PI)
                     propagatedParticles[i].t = (2 * Math.PI) + totalAngle;
                 else
                     propagatedParticles[i].t = totalAngle;
+                
 
             }
 
@@ -1050,7 +1051,7 @@ namespace DrRobot.JaguarControl
             {
                 int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
                 //int sampledParticle = (int)(random.NextInt() * weightedParticles.Count);
-               // particles[i] = propagatedParticles[i];
+                //particles[i] = propagatedParticles[i];
                 // particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
                 //particles[i] = propagatedParticles[weightedParticles[i]];
                     
@@ -1061,18 +1062,7 @@ namespace DrRobot.JaguarControl
                 particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
                 particles[i].w = propagatedParticles[weightedParticles[sampledParticle]].w;
                 
-                /*
-                double xParticle = propagatedParticles[i].x;
-                double yParticle = propagatedParticles[i].y;
-                double tParticle = propagatedParticles[i].t;
-                double wParticle = propagatedParticles[i].w;
 
-
-                particles[i].x = xParticle;
-                particles[i].y = yParticle;
-                particles[i].t = tParticle;
-                particles[i].w = wParticle;
-                    */
                     
                 /*
                 particles[i].x = propagatedParticles[i].x;
