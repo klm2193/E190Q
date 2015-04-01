@@ -904,11 +904,14 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0.02;
-                double wheelRError = 0.02;
+                double wheelLError = 0.01;
+                double wheelRError = 0.01;
 
-                double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
-                double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
+                //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
+                //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
+
+                double wheelDistanceLRand = gauss(wheelDistanceL, wheelLError);
+                double wheelDistanceRRand = gauss(wheelDistanceR, wheelRError);
 
                 double distanceTravelledGaussian = (double)((wheelDistanceLRand + wheelDistanceRRand) / 2.0);
                 double angleTravelledGaussian = (double)((wheelDistanceRRand - wheelDistanceLRand) / (2.0 * robotRadius));
@@ -950,15 +953,6 @@ namespace DrRobot.JaguarControl
                 for (int i = 0; i < numParticles; i++)
                 {
                     CalculateWeight(i);
-
-                    double idk = 0;
-                    if (propagatedParticles[i].w > 1)
-                    {
-                        idk = 1.1;
-                    }
-
-                    idk += idk;
-
                     maxWeight = Math.Max(maxWeight, propagatedParticles[i].w);
                 }
                 newLaserData = false;
@@ -977,6 +971,7 @@ namespace DrRobot.JaguarControl
                 int numCopies = 1;
 
                 // Approximate Method to generate the Weighted Particle List
+                /*
                 if (propagatedParticles[i].w < 0.1)
                 {
                     numCopies = 1;
@@ -1017,6 +1012,24 @@ namespace DrRobot.JaguarControl
                 {
                     numCopies = 10;
                 }
+                 * */
+
+                if (propagatedParticles[i].w < 0.25)
+                {
+                    numCopies = 1;
+                }
+                else if (propagatedParticles[i].w < 0.50)
+                {
+                    numCopies = 2;
+                }
+                else if (propagatedParticles[i].w < 0.75)
+                {
+                    numCopies = 3;
+                }
+                else if (propagatedParticles[i].w <= 1)
+                {
+                    numCopies = 4;
+                }
 
                 for (int j = 0; j < numCopies; j++)
                 {
@@ -1037,12 +1050,12 @@ namespace DrRobot.JaguarControl
             {
                 int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
                 //int sampledParticle = (int)(random.NextInt() * weightedParticles.Count);
-                //particles[i] = propagatedParticles[i];
+               // particles[i] = propagatedParticles[i];
                 // particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
                 //particles[i] = propagatedParticles[weightedParticles[i]];
                     
                     
-                   
+                
                 particles[i].x = propagatedParticles[weightedParticles[sampledParticle]].x;
                 particles[i].y = propagatedParticles[weightedParticles[sampledParticle]].y;
                 particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
@@ -1238,7 +1251,13 @@ namespace DrRobot.JaguarControl
             particles[p].t = 0; //initialT;
         }
 
-
+        double gauss(double mu, double sigma)
+        {
+            double u1 = random.NextDouble();
+            double u2 = random.NextDouble();
+            double randNorm = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+            return mu + sigma * randNorm;
+        }
 
         // Random number generator with gaussian distribution
         // Often random guassian numbers are used in particle filters. This
