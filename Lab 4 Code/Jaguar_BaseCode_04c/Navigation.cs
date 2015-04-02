@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using System.Collections.Generic;
+//using System.Collections.Queue;
 
 namespace DrRobot.JaguarControl
 {   
@@ -104,6 +105,19 @@ namespace DrRobot.JaguarControl
         double laserT;
 
         double maxWeight = 0;
+
+        // for augmented mcl
+        double wSlow = 0;
+        double wFast = 0;
+        double avgWeight = 0;
+        int fastSize = 10;
+        int slowSize = 100;
+        double alphaSlow = 0.001;
+        double alphaFast = 0.1;
+        Queue<double> fastQueue = new Queue<double>();
+        Queue<double> slowQueue = new Queue<double>();
+        
+
 
         public class Particle
         {
@@ -222,6 +236,16 @@ namespace DrRobot.JaguarControl
 
             // Don't run until we have gotten our first encoder measurements to difference with
             GetFirstEncoderMeasurements();
+
+            for (int i = 0; i < fastSize; i++)
+            {
+                fastQueue.Enqueue(0);
+            }
+
+            for (int i = 0; i < slowSize; i++)
+            {
+                slowQueue.Enqueue(0);
+            }
 
             // Run infinite Control Loop
             while (runThread)
@@ -950,16 +974,21 @@ namespace DrRobot.JaguarControl
             if (newLaserData)
             {
                 maxWeight = 0;
+                avgWeight = 0;
 
                 for (int i = 0; i < numParticles; i++)
                 {
                     CalculateWeight(i);
                     maxWeight = Math.Max(maxWeight, propagatedParticles[i].w);
+                    avgWeight += propagatedParticles[i].w / (double)numParticles;
                 }
                 newLaserData = false;
             }
 
+            double averageWeight = 0;
 
+
+           
             for (int i = 0; i < numParticles; i++)
             {
                 if (maxWeight == 0)
@@ -970,51 +999,7 @@ namespace DrRobot.JaguarControl
                 propagatedParticles[i].w = propagatedParticles[i].w / maxWeight;
 
                 int numCopies = 1;
-
-                // Approximate Method to generate the Weighted Particle List
-                /*
-                if (propagatedParticles[i].w < 0.1)
-                {
-                    numCopies = 1;
-                }
-                else if (propagatedParticles[i].w < 0.2)
-                {
-                    numCopies = 2;
-                }
-                else if (propagatedParticles[i].w < 0.3)
-                {
-                    numCopies = 3;
-                }
-                else if (propagatedParticles[i].w < 0.4)
-                {
-                    numCopies = 4;
-                }
-                else if (propagatedParticles[i].w < 0.5)
-                {
-                    numCopies = 5;
-                }
-                else if (propagatedParticles[i].w < 0.6)
-                {
-                    numCopies = 6;
-                }
-                else if (propagatedParticles[i].w < 0.7)
-                {
-                    numCopies = 7;
-                }
-                else if (propagatedParticles[i].w < 0.8)
-                {
-                    numCopies = 8;
-                }
-                else if (propagatedParticles[i].w < 0.9)
-                {
-                    numCopies = 9;
-                }
-                else if (propagatedParticles[i].w <= 1.0)
-                {
-                    numCopies = 10;
-                }
-                 * */
-
+              
                 if (propagatedParticles[i].w < 0.25)
                 {
                     numCopies = 1;
@@ -1031,12 +1016,16 @@ namespace DrRobot.JaguarControl
                 {
                     numCopies = 4;
                 }
+                
 
                 for (int j = 0; j < numCopies; j++)
                 {
                     weightedParticles.Add(i);
                 }
+
             }
+
+
 
             double totalX = 0;
             double totalY = 0;
@@ -1047,14 +1036,10 @@ namespace DrRobot.JaguarControl
 
 
             // Resampling the Particle List
+            /*
             for (int i = 0; i < numParticles; i++)
             {
                 int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
-                //int sampledParticle = (int)(random.NextInt() * weightedParticles.Count);
-                //particles[i] = propagatedParticles[i];
-                // particles[i] = propagatedParticles[weightedParticles[sampledParticle]];
-                //particles[i] = propagatedParticles[weightedParticles[i]];
-                    
                     
                 
                 particles[i].x = propagatedParticles[weightedParticles[sampledParticle]].x;
@@ -1062,28 +1047,6 @@ namespace DrRobot.JaguarControl
                 particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
                 particles[i].w = propagatedParticles[weightedParticles[sampledParticle]].w;
                 
-
-                    
-                /*
-                particles[i].x = propagatedParticles[i].x;
-                particles[i].y = propagatedParticles[i].y;
-                particles[i].t = propagatedParticles[i].t;
-                particles[i].w = propagatedParticles[i].w;
-                    */
-                    
-                    
-                //Particle sampled = propagatedParticles[weightedParticles[sampledParticle]];
-                //Particle sampled = propagatedParticles[i];
-                /*
-                double x1 = 0;
-
-                if ((Math.Abs(sampled.x - x) > 0.01) || (Math.Abs(sampled.y - y) > 0.01))
-                {
-                    x1 = 5;
-                }
-
-                x1 += 1;
-                    * */
 
                 totalX = particles[i].x + totalX;
                 totalY = particles[i].y + totalY;
@@ -1094,10 +1057,82 @@ namespace DrRobot.JaguarControl
                 totalTReal += TReal;
                 totalTImag += TImag;
 
+            }*/
+            
+            /*
+            double rand = random.NextDouble() * (1.0/(double)numParticles);
+            double c = propagatedParticles[0].w;
+            int k = 0;
+            int count = 0;
+            for (int m = 0; m < numParticles; m++)
+            {
+                double U = rand + m * (1.0 / (double)numParticles);
+
+                while (U > c) 
+                {
+                    k = k + 1;
+                    c = c + propagatedParticles[k].w;
+                }
+
+                particles[count] = propagatedParticles[k];
+
+
+                totalX = particles[count].x + totalX;
+                totalY = particles[count].y + totalY;
+
+                TReal = Math.Cos(particles[count].t);
+                TImag = Math.Sin(particles[count].t);
+
+                totalTReal += TReal;
+                totalTImag += TImag;
+                count++;
             }
+             * */
+
+            
+            wSlow += alphaSlow * (avgWeight - wSlow) - slowQueue.Dequeue();
+            wFast += alphaFast * (avgWeight - wFast) - fastQueue.Dequeue();
+
+            slowQueue.Enqueue(wSlow);
+            fastQueue.Enqueue(wFast);
 
 
-            // This is from Lab 1
+            double randomProb = 1 - wFast / wSlow;
+            randomProb = Math.Max(0, randomProb);
+
+            for (int m = 0; m < numParticles; m++)
+            {
+                
+
+                double randChosen = random.NextDouble();
+
+                if (randChosen <= randomProb)
+                {
+                    SetRandomPos(m);
+                }
+
+                else
+                {
+                    int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
+
+                    particles[m].x = propagatedParticles[weightedParticles[sampledParticle]].x;
+                    particles[m].y = propagatedParticles[weightedParticles[sampledParticle]].y;
+                    particles[m].t = propagatedParticles[weightedParticles[sampledParticle]].t;
+                    particles[m].w = propagatedParticles[weightedParticles[sampledParticle]].w;
+                }
+
+
+                totalX = particles[m].x + totalX;
+                totalY = particles[m].y + totalY;
+
+                TReal = Math.Cos(particles[m].t);
+                TImag = Math.Sin(particles[m].t);
+
+                totalTReal += TReal;
+                totalTImag += TImag;
+            }
+            
+            // update the state estimate
             x_est = totalX / (double)numParticles;
             y_est = totalY / (double)numParticles;
             t_est = Math.Atan2(totalTImag, totalTReal);
@@ -1119,9 +1154,16 @@ namespace DrRobot.JaguarControl
             double yParticle = propagatedParticles[p].y;
             double tParticle = propagatedParticles[p].t;
 
-            int[] nominalAngleArray = {54, 66, 84, 99, 114, 129, 144, 159, 174 };
+            //int[] nominalAngleArray = {54, 66, 84, 99, 114, 129, 144, 159, 174 };
+            List<int> nominalAngleArray = new List<int>();
 
-            for (int i = 0; i < nominalAngleArray.Length; i++)
+            for (int i = 0; i < LaserData.Length; i = i + 3*laserStepSize)
+            {
+                nominalAngleArray.Add(i);
+            }
+
+            //for (int i = 0; i < nominalAngleArray.Length; i++)
+            for (int i = 0; i < nominalAngleArray.Count; i++)
             {
                 int angle = nominalAngleArray[i]; // angle from laser scanner
                 //double particleLaserDist = map.GetClosestWallDistance(xParticle, yParticle, particleAngleArray[i]);
