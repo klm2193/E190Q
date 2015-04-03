@@ -928,8 +928,8 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0.5;// 0.5;
-                double wheelRError = 0.5;// 0.5;
+                double wheelLError = 2.5;// 0.5;
+                double wheelRError = 2.5;// 0.5;
 
                 //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
@@ -1137,7 +1137,7 @@ namespace DrRobot.JaguarControl
             //int[] nominalAngleArray = {54, 66, 84, 99, 114, 129, 144, 159, 174 };
             List<int> nominalAngleArray = new List<int>();
 
-            for (int i = 0; i < LaserData.Length; i = i + 6 * laserStepSize)
+            for (int i = 0; i < LaserData.Length; i = i + 5 * laserStepSize)
             {
                 nominalAngleArray.Add(i);
             }
@@ -1154,7 +1154,7 @@ namespace DrRobot.JaguarControl
 
                 double angleWeight;
 
-                if (nominalLaserDist <= .203)
+                if (nominalLaserDist == 6)
                 {
                     angleWeight = 0;
                 }
