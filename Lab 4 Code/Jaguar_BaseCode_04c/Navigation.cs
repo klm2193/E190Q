@@ -105,6 +105,7 @@ namespace DrRobot.JaguarControl
         double laserT;
 
         double maxWeight = 0;
+        double sdx, sdy, sdt, xErrorSum,yErrorSum,tErrorSum;
 
         // for augmented mcl
         double wSlow = 0.00000000000001;
@@ -188,7 +189,7 @@ namespace DrRobot.JaguarControl
             // Zero actuator signals
             motorSignalL = 0;
             motorSignalR = 0;
-            loggingOn = false;
+            loggingOn = false; //CHANGE
 
             // Set random start for particles
             InitializeParticles();
@@ -556,7 +557,7 @@ namespace DrRobot.JaguarControl
 
             streamPath_ = "../../../Data/JaguarData_" + date + ".csv";
             logFile = File.CreateText(streamPath_);
-            string header = "time,x,y,t";
+            string header = "time,realx,realy,realt, predx,predy,predt,sdx,sdy,sdt";
             logFile.WriteLine(header);
             logFile.Close();
 
@@ -587,11 +588,14 @@ namespace DrRobot.JaguarControl
 
                 //String newData = time.ToString() + " " + (LaserData[113]).ToString() + " " + (1000 - LaserData[113]).ToString();
 
-                String newData = time.ToString() + "," + x.ToString() + "," + y.ToString() + "," + t.ToString(); // separate by commas
+                String newData = time.ToString() + "," + x.ToString() +
+                    "," + y.ToString() + "," + t.ToString()+"," + x_est.ToString() + "," + y_est.ToString() + "," + t_est.ToString() + ","+
+                    sdx.ToString() + "," + sdt.ToString();
 
                 logFile = File.AppendText(streamPath_);
                 logFile.WriteLine(newData);
                 logFile.Close();
+
             }
         }
         #endregion
@@ -1036,6 +1040,9 @@ namespace DrRobot.JaguarControl
             double totalTImag = 0;
             double TReal;
             double TImag;
+            xErrorSum = 0;
+            yErrorSum = 0;
+            tErrorSum = 0;
 
 
             // Resampling the Particle List
@@ -1049,7 +1056,10 @@ namespace DrRobot.JaguarControl
                 particles[i].y = propagatedParticles[weightedParticles[sampledParticle]].y;
                 particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
                 particles[i].w = propagatedParticles[weightedParticles[sampledParticle]].w;
-                
+
+                xErrorSum += Math.Pow(particles[i].x - x, 2);
+                yErrorSum += Math.Pow(particles[i].y - y, 2);
+                tErrorSum += Math.Pow(particles[i].t - t, 2);
 
                 totalX = particles[i].x + totalX;
                 totalY = particles[i].y + totalY;
@@ -1116,6 +1126,10 @@ namespace DrRobot.JaguarControl
             x_est = totalX / (double)numParticles;
             y_est = totalY / (double)numParticles;
             t_est = Math.Atan2(totalTImag, totalTReal);
+
+            sdx = Math.Sqrt(xErrorSum / (numParticles - 1));
+            sdy = Math.Sqrt(yErrorSum / (numParticles - 1));
+            sdt = Math.Sqrt(tErrorSum / (numParticles - 1));
 
         }
 
