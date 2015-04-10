@@ -590,7 +590,7 @@ namespace DrRobot.JaguarControl
 
                 String newData = time.ToString() + "," + x.ToString() +
                     "," + y.ToString() + "," + t.ToString()+"," + x_est.ToString() + "," + y_est.ToString() + "," + t_est.ToString() + ","+
-                    sdx.ToString() + "," + sdt.ToString();
+                    sdx.ToString() + "," + sdy.ToString() + "," + sdt.ToString();
 
                 logFile = File.AppendText(streamPath_);
                 logFile.WriteLine(newData);
@@ -1057,9 +1057,9 @@ namespace DrRobot.JaguarControl
                 particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
                 particles[i].w = propagatedParticles[weightedParticles[sampledParticle]].w;
 
-                xErrorSum += Math.Pow(particles[i].x - x, 2);
-                yErrorSum += Math.Pow(particles[i].y - y, 2);
-                tErrorSum += Math.Pow(particles[i].t - t, 2);
+                xErrorSum += Math.Pow(particles[i].x - x_est, 2);
+                yErrorSum += Math.Pow(particles[i].y - y_est, 2);
+                tErrorSum += Math.Pow(particles[i].t - t_est, 2);
 
                 totalX = particles[i].x + totalX;
                 totalY = particles[i].y + totalY;

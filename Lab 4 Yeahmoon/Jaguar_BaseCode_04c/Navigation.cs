@@ -105,6 +105,7 @@ namespace DrRobot.JaguarControl
         double laserT;
 
         double maxWeight = 0;
+        double sdx, sdy, sdt, xErrorSum, yErrorSum, tErrorSum;
 
         // for augmented mcl
         double wSlow = 0;
@@ -566,7 +567,7 @@ namespace DrRobot.JaguarControl
 
             streamPath_ = "../../../Data/JaguarData_" + date + ".csv";
             logFile = File.CreateText(streamPath_);
-            string header = "time,x,y,t";
+            string header = "time,realx,realy,realt, predx,predy,predt,sdx,sdy,sdt";
             logFile.WriteLine(header);
             logFile.Close();
 
@@ -597,11 +598,14 @@ namespace DrRobot.JaguarControl
 
                 //String newData = time.ToString() + " " + (LaserData[113]).ToString() + " " + (1000 - LaserData[113]).ToString();
 
-                String newData = time.ToString() + "," + x.ToString() + "," + y.ToString() + "," + t.ToString(); // separate by commas
+                String newData = time.ToString() + "," + x.ToString() +
+                    "," + y.ToString() + "," + t.ToString() + "," + x_est.ToString() + "," + y_est.ToString() + "," + t_est.ToString() + "," +
+                    sdx.ToString() + "," + sdy.ToString() + "," + sdt.ToString();
 
                 logFile = File.AppendText(streamPath_);
                 logFile.WriteLine(newData);
                 logFile.Close();
+
             }
         }
         #endregion
@@ -940,8 +944,8 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 1.0;
-                double wheelRError = 1.0;
+                double wheelLError = 0.2;//1.0;
+                double wheelRError = 0.2;//1.0;
 
                 //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
@@ -1045,7 +1049,9 @@ namespace DrRobot.JaguarControl
             double totalTImag = 0;
             double TReal;
             double TImag;
-
+            xErrorSum = 0;
+            yErrorSum = 0;
+            tErrorSum = 0;
 
             // Resampling the Particle List
             /*
@@ -1138,6 +1144,10 @@ namespace DrRobot.JaguarControl
                     particles[m].y = propagatedParticles[weightedParticles[sampledParticle]].y;
                     particles[m].t = propagatedParticles[weightedParticles[sampledParticle]].t;
                     particles[m].w = propagatedParticles[weightedParticles[sampledParticle]].w;
+
+                    xErrorSum += Math.Pow(particles[m].x - x_est, 2);
+                    yErrorSum += Math.Pow(particles[m].y - y_est, 2);
+                    tErrorSum += Math.Pow(particles[m].t - t_est, 2);
                 }
 
 
@@ -1155,7 +1165,10 @@ namespace DrRobot.JaguarControl
             x_est = totalX / (double)numParticles;
             y_est = totalY / (double)numParticles;
             t_est = Math.Atan2(totalTImag, totalTReal);
-            
+
+            sdx = Math.Sqrt(xErrorSum / (numParticles - 1));
+            sdy = Math.Sqrt(yErrorSum / (numParticles - 1));
+            sdt = Math.Sqrt(tErrorSum / (numParticles - 1));
         }
 
         // Particle filters work by setting the weight associated with each
@@ -1168,7 +1181,7 @@ namespace DrRobot.JaguarControl
         {
             double weight = 1;
 
-            double laserSD = 0.4;
+            double laserSD = 0.2;
             double xParticle = propagatedParticles[p].x;
             double yParticle = propagatedParticles[p].y;
             double tParticle = propagatedParticles[p].t;
