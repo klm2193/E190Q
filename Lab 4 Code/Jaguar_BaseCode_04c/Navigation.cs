@@ -590,7 +590,7 @@ namespace DrRobot.JaguarControl
 
                 String newData = time.ToString() + "," + x.ToString() +
                     "," + y.ToString() + "," + t.ToString()+"," + x_est.ToString() + "," + y_est.ToString() + "," + t_est.ToString() + ","+
-                    sdx.ToString() + "," + sdt.ToString();
+                    sdx.ToString() +"," + sdy.ToString()+ "," + sdt.ToString();
 
                 logFile = File.AppendText(streamPath_);
                 logFile.WriteLine(newData);
