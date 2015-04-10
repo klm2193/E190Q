@@ -678,12 +678,12 @@ namespace DrRobot.JaguarControl
         {
 
             // ****************** Additional Student Code: Start ************
-
+            /*
             x = desiredX;
             y = desiredY;
             t = desiredT;
-
-            /*
+            */
+            
             double deltaX = desiredX - x_est;
             double deltaY = desiredY - y_est;
             double deltaT = desiredT - t_est;
@@ -778,7 +778,7 @@ namespace DrRobot.JaguarControl
                 desiredRotRateR = (short)(maxPulsesPerSec * signR);
                 desiredRotRateL = (short)(maxPulsesPerSec * signL * VelRatio);
             }
-             * */
+             
 
 
             // ****************** Additional Student Code: End   ************
@@ -847,7 +847,7 @@ namespace DrRobot.JaguarControl
             for (int i = 0; i < numXCells * numYCells; i++)
                 numNodesInCell[i] = 0;
             numNodes = 0;
-
+            
 
             // ****************** Additional Student Code: Start ************
 
@@ -856,10 +856,11 @@ namespace DrRobot.JaguarControl
 
 
             // Create and add the start Node
-
+            Node startNode = new Node(x_est, y_est, 0, 0);
+            AddNode(startNode);
 
             // Create the goal node
-
+            Node goalNode = new Node(desiredX, desiredY, 0, 0);
 
             // Loop until path created
             bool pathFound = false;
@@ -867,13 +868,33 @@ namespace DrRobot.JaguarControl
             int iterations = 0;
             Random randGenerator = new Random();
 
-
-            
-
             while (iterations < maxIterations && !pathFound)
             {
+                int randCellNumber = (int)(randGenerator.NextDouble() * numOccupiedCells);
+                int randNodeNumber = (int)(randGenerator.NextDouble() * numNodesInCell[occupiedCellsList[randCellNumber]]);
+                Node randExpansionNode = NodesInCells[occupiedCellsList[randCellNumber], randNodeNumber];
 
-                
+                double maxStep = 3;
+                double expansionStep = randGenerator.NextDouble() * maxStep;
+                double expansionAngle = BoundAngle(randGenerator.NextDouble() * 2 * Math.PI);
+
+                double newX = randExpansionNode.x + expansionStep * Math.Cos(expansionAngle);
+                double newY = randExpansionNode.y + expansionStep * Math.Sin(expansionAngle);
+
+                Node newNode = new Node(newX, newY, numNodes, randExpansionNode.nodeIndex);
+
+                if (!map.CollisionFound(randExpansionNode, newNode, 2*robotRadius))
+                {
+                    AddNode(newNode);
+
+                    if(!map.CollisionFound(newNode, goalNode, 2*robotRadius))
+                    {
+                        goalNode.nodeIndex = numNodes;
+                        goalNode.lastNode = newNode.nodeIndex;
+                        AddNode(goalNode);
+                        pathFound = true;
+                    }
+                }
 
                 // Increment number of iterations
                 iterations++;
@@ -881,7 +902,7 @@ namespace DrRobot.JaguarControl
 
 
             // Create the trajectory to follow
-            //BuildTraj(goalNode);
+            BuildTraj(goalNode);
 
             
             // ****************** Additional Student Code: End   ************
@@ -1288,9 +1309,9 @@ namespace DrRobot.JaguarControl
 
 
             // update the state estimate
-            x_est = totalX / (double)numParticles;
-            y_est = totalY / (double)numParticles;
-            t_est = Math.Atan2(totalTImag, totalTReal);
+            x_est = x; // totalX / (double)numParticles;
+            y_est = y; // totalY / (double)numParticles;
+            t_est = t; // Math.Atan2(totalTImag, totalTReal);
 
             sdx = Math.Sqrt(xErrorSum / (numParticles - 1));
             sdy = Math.Sqrt(yErrorSum / (numParticles - 1));
