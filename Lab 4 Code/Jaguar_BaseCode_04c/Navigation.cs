@@ -90,7 +90,7 @@ namespace DrRobot.JaguarControl
         public Map map;
         public Particle[] particles;
         public Particle[] propagatedParticles;
-        public int numParticles = 6000;
+        public int numParticles = 1000;
         public double K_wheelRandomness = 0.15;//0.25
         public Random random = new Random();
         public bool newLaserData = false;
@@ -932,8 +932,8 @@ namespace DrRobot.JaguarControl
 
             for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 2.5;// 0.5;
-                double wheelRError = 2.5;// 0.5;
+                double wheelLError = 0.5;
+                double wheelRError = 0.5;
 
                 //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
