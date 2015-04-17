@@ -89,7 +89,7 @@ namespace DrRobot.JaguarControl
 
             // count number of lines in CSV file
 
-            numMapSegments = File.ReadAllLines(@"C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 4 Code\Jaguar_BaseCode_04c\moresimplemap.csv").Length;
+            numMapSegments = File.ReadAllLines(@"C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\moresimplemap.csv").Length;
 
             mapSegmentCorners = new double[numMapSegments, 2, 2];
 
@@ -103,7 +103,7 @@ namespace DrRobot.JaguarControl
 
             // open CSV file
 
-            var reader = new StreamReader(File.OpenRead(@"C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 4 Code\Jaguar_BaseCode_04c\moresimplemap.csv"));
+            var reader = new StreamReader(File.OpenRead(@"C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\moresimplemap.csv"));
 
             int r = 0;
 

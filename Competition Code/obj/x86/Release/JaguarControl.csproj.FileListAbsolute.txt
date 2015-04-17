@@ -146,3 +146,28 @@ C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 4 Code\Jaguar_BaseCode_04c\bin\x
 C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 4 Code\Jaguar_BaseCode_04c\bin\x86\Release\System.Threading.dll
 C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 4 Code\Jaguar_BaseCode_04c\bin\x86\Release\MathNet.Numerics.xml
 C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Lab 4 Code\Jaguar_BaseCode_04c\bin\x86\Release\System.Threading.xml
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\Interop.EARTHLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\JaguarControl.csproj.ResolveComReference.cache
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\JaguarControl.exe
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\JaguarControl.pdb
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\JaguarControl.exe
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\JaguarControl.pdb
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\MathNet.Numerics.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\System.Threading.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\MathNet.Numerics.xml
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\System.Threading.xml
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\Interop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\Interop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\Interop.EARTHLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\AxInterop.AXISMEDIACONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\bin\x86\Release\AxInterop.DRROBOTSentinelCONTROLLib.dll
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\JaguarControl.csprojResolveAssemblyReference.cache
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\DrRobot.JaguarControl.DrRobotRobotConnection.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrl.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\DrRobot.JaguarControl.JaguarCtrlResource.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\DrRobot.JaguarControl.Properties.Resources.resources
+C:\Users\Kristina\Documents\HMC\E190Q\E190Q\Competition Code\obj\x86\Release\JaguarControl.csproj.GenerateResource.Cache

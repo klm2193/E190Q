@@ -6,7 +6,7 @@ using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 //using System.Collections.Queue;
-//using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace DrRobot.JaguarControl
 {
@@ -91,7 +91,7 @@ namespace DrRobot.JaguarControl
         public Map map;
         public Particle[] particles;
         public Particle[] propagatedParticles;
-        public int numParticles = 100;//1000;
+        public static int numParticles = 1000;
         public double K_wheelRandomness = 0.15;//0.25
         public Random random = new Random();
         public bool newLaserData = false;
@@ -100,6 +100,9 @@ namespace DrRobot.JaguarControl
         public double[] laserAngles;
         private int laserCounter;
         private int laserStepSize = 3;
+
+        // for parallelization
+        int[] particleIndeces = new int[numParticles];
 
         double laserX;
         double laserY;
@@ -265,6 +268,13 @@ namespace DrRobot.JaguarControl
 
             // Set random start for particles
             InitializeParticles();
+
+
+            // create array of partile indeces
+            for (int i = 0; i < numParticles; ++i)
+            {
+                particleIndeces[i] = i;
+            }
 
             // Set default to no motionPlanRequired
             motionPlanRequired = false;
@@ -1601,10 +1611,11 @@ namespace DrRobot.JaguarControl
 //#if false
             List<int> weightedParticles = new List<int>();
 
-            for (int i = 0; i < numParticles; i++)
+            //for (int i = 0; i < numParticles; i++)
+            Parallel.ForEach(particleIndeces, i =>
             {
-                double wheelLError = 0.25;//0.5;
-                double wheelRError = 0.25;// 0.5;
+                double wheelLError = 0.5;
+                double wheelRError = 0.5;
 
                 //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
@@ -1642,7 +1653,7 @@ namespace DrRobot.JaguarControl
                     propagatedParticles[i].t = totalAngle;
 
 
-            }
+            });
 
 
 
@@ -1651,14 +1662,24 @@ namespace DrRobot.JaguarControl
                 maxWeight = 0;
                 avgWeight = 0;
 
-                for (int i = 0; i < numParticles; i++)
+                //for (int i = 0; i < numParticles; i++)
+                Parallel.ForEach(particleIndeces, i =>
                 {
                     CalculateWeight(i);
+
+                });
+
+
+                for (int i = 0; i < numParticles; i++)
+                {
                     maxWeight = Math.Max(maxWeight, propagatedParticles[i].w);
                     avgWeight = avgWeight + propagatedParticles[i].w / (double)numParticles;
                 }
+
+
                 newLaserData = false;
             }
+
 
 
 
@@ -1822,7 +1843,7 @@ namespace DrRobot.JaguarControl
             //int[] nominalAngleArray = {54, 66, 84, 99, 114, 129, 144, 159, 174 };
             List<int> nominalAngleArray = new List<int>();
 
-            for (int i = 0; i < LaserData.Length; i = i + 6/*5*/ * laserStepSize)
+            for (int i = 0; i < LaserData.Length; i = i + 5 * laserStepSize)
             {
                 nominalAngleArray.Add(i);
             }
