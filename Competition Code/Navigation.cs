@@ -367,11 +367,11 @@ namespace DrRobot.JaguarControl
                     }
 
                     // Drive the robot to a desired Point (lab 3)
-                    //FlyToSetPoint();
+                    FlyToSetPoint();
 
                     // Follow the trajectory instead of a desired point (lab 3)
                     //TrackTrajectory();
-                    newTrackTrajectory();
+                    //newTrackTrajectory();
 
                     // Actuate motors based actuateMotorL and actuateMotorR
                     if (jaguarControl.Simulating())
@@ -384,7 +384,8 @@ namespace DrRobot.JaguarControl
                         // Determine the desired PWM signals for desired wheel speeds
                         CalcMotorSignals();
                         //KalmanEstimator();
-                        ActuateMotorsWithPWMControl();
+                        //ActuateMotorsWithPWMControl();
+                        ActuateMotorsWithVelControl();
                     }
 
                 }
@@ -547,9 +548,9 @@ namespace DrRobot.JaguarControl
             double K_d = 250; //0.5
              * */
 
-            K_p = 20;
-            K_i = 3;
-            K_d = 20;
+            K_p = 5;
+            K_i = 1;
+            K_d = 0;
 
             double K_p_R = 0;// 95; // 30;// 25;       //Only Rotation PID Constants
             double K_i_R = 0; // 4.5;// 0.1;
@@ -591,8 +592,8 @@ namespace DrRobot.JaguarControl
             }
 
 
-            motorSignalL = (short)(zeroOutput + u_L);
-            motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because the encoders count backwards
+            motorSignalL = (short)(0 + u_L);
+            motorSignalR = (short)(0 + u_R);   //u_R is negative because the encoders count backwards
 
             motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
@@ -678,6 +679,46 @@ namespace DrRobot.JaguarControl
 
             motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL));
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
+
+        }
+
+        public void CalcMotorSignalsBasic()
+        {
+            short zeroOutput = 16383;
+            short maxPosOutput = 32767;
+
+            double K_p = 100;
+            double K_i = 0;// 0.1;
+            double K_d = 0;// 1;
+
+            double maxErr = 8000 / deltaT;
+
+
+            e_L = desiredRotRateL - diffEncoderPulseL / deltaT;
+            e_R = desiredRotRateR - diffEncoderPulseR / deltaT;
+
+            e_sum_L = .9 * e_sum_L + e_L * deltaT;
+            e_sum_R = .9 * e_sum_R + e_R * deltaT;
+
+            e_sum_L = Math.Max(-maxErr, Math.Min(e_sum_L, maxErr));
+            e_sum_R = Math.Max(-maxErr, Math.Min(e_sum_R, maxErr));
+
+            u_L = ((K_p * e_L) + (K_i * e_sum_L) + (K_d * (e_L - e_L_last) / deltaT));
+            e_L_last = e_L;
+
+            u_R = ((K_p * e_R) + (K_i * e_sum_R) + (K_d * (e_R - e_R_last) / deltaT));
+            e_R_last = e_R;
+            // The following settings are used to help develop the controller in simulation.
+            // They will be replaced when the actual jaguar is used.
+            //motorSignalL = (short)(zeroOutput + desiredRotRateL * 100);// (zeroOutput + u_L);
+            //motorSignalR = (short)(zeroOutput - desiredRotRateR * 100);//(zeroOutput - u_R);
+
+            motorSignalL = (short)(zeroOutput + u_L);
+            motorSignalR = (short)(zeroOutput - u_R);
+
+            motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL));
+            motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
+
 
         }
 
@@ -971,12 +1012,12 @@ namespace DrRobot.JaguarControl
         // THis function is called to follow a trajectory constructed by PRMMotionPlanner()
         private void TrackTrajectory()
         {
-            /*
+            
             // Following a Straight Line
             desiredX = x_est + 0.1;
             desiredY = desiredX * 2 + 1;
             desiredT = Math.Atan2(2, 1);
-            */
+            
 
             /*
             // Following a Circular Path
@@ -1594,11 +1635,11 @@ namespace DrRobot.JaguarControl
 
             //x_est = 0; y_est = 0; t_est = 0; (this was in lab 4)
 
-            //x_est = x;
-            //  y_est = y;
-            //   t_est = t;
+            x_est = x;
+            y_est = y;
+            t_est = t;
 
-            //#if false
+            #if false
             List<int> weightedParticles = new List<int>();
 
             for (int i = 0; i < numParticles; i++)
@@ -1801,7 +1842,7 @@ namespace DrRobot.JaguarControl
             sdx = Math.Sqrt(xErrorSum / (numParticles - 1));
             sdy = Math.Sqrt(yErrorSum / (numParticles - 1));
             sdt = Math.Sqrt(tErrorSum / (numParticles - 1));
-            //#endif
+            #endif
         }
 
         // Particle filters work by setting the weight associated with each
