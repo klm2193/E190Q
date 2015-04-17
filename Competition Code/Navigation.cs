@@ -6,7 +6,7 @@ using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 //using System.Collections.Queue;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 
 namespace DrRobot.JaguarControl
 {
@@ -91,7 +91,7 @@ namespace DrRobot.JaguarControl
         public Map map;
         public Particle[] particles;
         public Particle[] propagatedParticles;
-        public static int numParticles = 1000;
+        public int numParticles = 100;//1000;
         public double K_wheelRandomness = 0.15;//0.25
         public Random random = new Random();
         public bool newLaserData = false;
@@ -101,15 +101,12 @@ namespace DrRobot.JaguarControl
         private int laserCounter;
         private int laserStepSize = 3;
 
-        // for parallelization
-        int[] particleIndeces = new int[numParticles];
-
         double laserX;
         double laserY;
         double laserT;
 
         double maxWeight = 0;
-        double sdx, sdy, sdt, xErrorSum,yErrorSum,tErrorSum;
+        double sdx, sdy, sdt, xErrorSum, yErrorSum, tErrorSum;
 
         // for augmented mcl
         double wSlow = 0.00000000000001;
@@ -181,7 +178,7 @@ namespace DrRobot.JaguarControl
         short zeroOutput = 16383;
         short maxPosOutput = 32767;
 
-        
+
 
         public class Particle
         {
@@ -268,13 +265,6 @@ namespace DrRobot.JaguarControl
 
             // Set random start for particles
             InitializeParticles();
-
-
-            // create array of partile indeces
-            for (int i = 0; i < numParticles; ++i)
-            {
-                particleIndeces[i] = i;
-            }
 
             // Set default to no motionPlanRequired
             motionPlanRequired = false;
@@ -593,24 +583,24 @@ namespace DrRobot.JaguarControl
                 motorSignalL = 0;
                 motorSignalR = 0;
             }
-            
+
             else if ((pho < 0.1) && (Math.Abs(deltaAngle) > 0.18))
             {
                 u_L = ((K_p_R * e_L) + (K_i_R * e_sum_L) + (K_d_R * (e_L - e_L_last) / deltaT));
                 u_R = ((K_p_R * e_R) + (K_i_R * e_sum_R) + (K_d_R * (e_R - e_R_last) / deltaT));
             }
-            
+
 
             motorSignalL = (short)(zeroOutput + u_L);
             motorSignalR = (short)(zeroOutput - u_R);   //u_R is negative because the encoders count backwards
 
             motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
-             
+
             /*
             motorSignalL = (short)(zeroOutput+9000);
             motorSignalR = zeroOutput;*/
-             
+
             //motorSignalR = (short)(zeroOutput - 12000);//13000);
 
             //motorSignalR = -18000;
@@ -728,7 +718,7 @@ namespace DrRobot.JaguarControl
 
             motorSignalL = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalL)); //sets limit to motorSignal
             motorSignalR = (short)Math.Min(maxPosOutput, Math.Max(0, (int)motorSignalR));
-             
+
         }
 
         // At every iteration of the control loop, this function sends
@@ -808,7 +798,7 @@ namespace DrRobot.JaguarControl
                 short zeroOutput = 16383;       //sets lower limit to motor signal
                 short maxPosOutput = 32767;
 
-                double actL = 350*(motorSignalL-zeroOutput)/(maxPosOutput-zeroOutput);
+                double actL = 350 * (motorSignalL - zeroOutput) / (maxPosOutput - zeroOutput);
                 double actR = 350 * (motorSignalR - zeroOutput) / (maxPosOutput - zeroOutput);
 
                 String newData = time.ToString() + "," + motorSignalL.ToString() + "," + motorSignalR.ToString() + "," + diffEncoderPulseL.ToString() +
@@ -873,7 +863,7 @@ namespace DrRobot.JaguarControl
             y = desiredY;
             t = desiredT;
             */
-            
+
             double deltaX = desiredX - x_est;
             double deltaY = desiredY - y_est;
             double deltaT = desiredT - t_est;
@@ -968,10 +958,10 @@ namespace DrRobot.JaguarControl
                 desiredRotRateR = (short)(maxPulsesPerSec * signR);
                 desiredRotRateL = (short)(maxPulsesPerSec * signL * VelRatio);
             }
-            
 
 
-            
+
+
             // ****************** Additional Student Code: End   ************
 
         }
@@ -1175,7 +1165,7 @@ namespace DrRobot.JaguarControl
                     desiredT = -1.57;
                 }
             }
-            
+
             // path 6: straight line south from M1 through M2
             if (pathIndex == 6)
             {
@@ -1603,19 +1593,18 @@ namespace DrRobot.JaguarControl
             // Put code here to calculate x_est, y_est, t_est using a PF
 
             //x_est = 0; y_est = 0; t_est = 0; (this was in lab 4)
-            
-//x_est = x;
-          //  y_est = y;
-         //   t_est = t;
 
-//#if false
+            //x_est = x;
+            //  y_est = y;
+            //   t_est = t;
+
+            //#if false
             List<int> weightedParticles = new List<int>();
 
-            //for (int i = 0; i < numParticles; i++)
-            Parallel.ForEach(particleIndeces, i =>
+            for (int i = 0; i < numParticles; i++)
             {
-                double wheelLError = 0.5;
-                double wheelRError = 0.5;
+                double wheelLError = 0.25;//0.5;
+                double wheelRError = 0.25;// 0.5;
 
                 //double wheelDistanceLRand = wheelDistanceL + (RandomGaussian() * wheelLError);
                 //double wheelDistanceRRand = wheelDistanceR + (RandomGaussian() * wheelRError);
@@ -1653,7 +1642,7 @@ namespace DrRobot.JaguarControl
                     propagatedParticles[i].t = totalAngle;
 
 
-            });
+            }
 
 
 
@@ -1662,24 +1651,14 @@ namespace DrRobot.JaguarControl
                 maxWeight = 0;
                 avgWeight = 0;
 
-                //for (int i = 0; i < numParticles; i++)
-                Parallel.ForEach(particleIndeces, i =>
-                {
-                    CalculateWeight(i);
-
-                });
-
-
                 for (int i = 0; i < numParticles; i++)
                 {
+                    CalculateWeight(i);
                     maxWeight = Math.Max(maxWeight, propagatedParticles[i].w);
                     avgWeight = avgWeight + propagatedParticles[i].w / (double)numParticles;
                 }
-
-
                 newLaserData = false;
             }
-
 
 
 
@@ -1738,12 +1717,12 @@ namespace DrRobot.JaguarControl
 
 
             // Resampling the Particle List
-            
+
             for (int i = 0; i < numParticles; i++)
             {
                 int sampledParticle = (int)(random.NextDouble() * weightedParticles.Count);
-                    
-                
+
+
                 particles[i].x = propagatedParticles[weightedParticles[sampledParticle]].x;
                 particles[i].y = propagatedParticles[weightedParticles[sampledParticle]].y;
                 particles[i].t = propagatedParticles[weightedParticles[sampledParticle]].t;
@@ -1763,7 +1742,7 @@ namespace DrRobot.JaguarControl
                 totalTImag += TImag;
 
             }
-            
+
 
             /*
             wSlow += alphaSlow * (avgWeight - wSlow) - slowQueue.Dequeue();
@@ -1779,7 +1758,7 @@ namespace DrRobot.JaguarControl
 
             double randomProb = 1.0 - wFast / wSlow;
             randomProb = Math.Min(Math.Max(0, randomProb), 0.33);
-            
+
             /*
             for (int m = 0; m < numParticles; m++)
             {
@@ -1812,7 +1791,7 @@ namespace DrRobot.JaguarControl
                 totalTReal += TReal;
                 totalTImag += TImag;
             }*/
-            
+
 
             // update the state estimate
             x_est = totalX / (double)numParticles;
@@ -1822,7 +1801,7 @@ namespace DrRobot.JaguarControl
             sdx = Math.Sqrt(xErrorSum / (numParticles - 1));
             sdy = Math.Sqrt(yErrorSum / (numParticles - 1));
             sdt = Math.Sqrt(tErrorSum / (numParticles - 1));
-//#endif
+            //#endif
         }
 
         // Particle filters work by setting the weight associated with each
@@ -1843,7 +1822,7 @@ namespace DrRobot.JaguarControl
             //int[] nominalAngleArray = {54, 66, 84, 99, 114, 129, 144, 159, 174 };
             List<int> nominalAngleArray = new List<int>();
 
-            for (int i = 0; i < LaserData.Length; i = i + 5 * laserStepSize)
+            for (int i = 0; i < LaserData.Length; i = i + 6/*5*/ * laserStepSize)
             {
                 nominalAngleArray.Add(i);
             }
