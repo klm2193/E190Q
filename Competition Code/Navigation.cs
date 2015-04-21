@@ -178,6 +178,9 @@ namespace DrRobot.JaguarControl
         short zeroOutput = 16383;
         short maxPosOutput = 32767;
 
+        double cummulativeDistanceTravelled = 0.0;
+        double cummulativeAngleTravelled = 0.0;
+
 
 
         public class Particle
@@ -338,7 +341,7 @@ namespace DrRobot.JaguarControl
                 UpdateSensorMeasurements();
 
                 // Determine the change of robot position, orientation (lab 2)	
-                MotionPrediction();
+                MotionPredictionCR();
 
                 // Update the global state of the robot - x,y,t (lab 2)
                 LocalizeRealWithOdometry();
@@ -548,7 +551,7 @@ namespace DrRobot.JaguarControl
             double K_d = 250; //0.5
              * */
 
-            K_p = 5;
+            K_p = 10;
             K_i = 1;
             K_d = 0;
 
@@ -1573,6 +1576,48 @@ namespace DrRobot.JaguarControl
             // calculate distance travelled
             distanceTravelled = (double)((wheelDistanceL + wheelDistanceR) / 2.0);
             angleTravelled = (double)((wheelDistanceR - wheelDistanceL) / (2.0 * robotRadius));
+
+
+            // ****************** Additional Student Code: End   ************
+        }
+
+        public void MotionPredictionCR()
+        {
+
+            // ****************** Additional Student Code: Start ************
+
+            // Put code here to calculated distanceTravelled and angleTravelled.
+            // You can set and use variables like diffEncoder1, currentEncoderPulse1,
+            // wheelDistanceL, wheelRadius, encoderResolution etc. These are defined
+            // in the Robot.h file.
+
+            diffEncoderPulseL = currentEncoderPulseL - lastEncoderPulseL;
+            diffEncoderPulseR = -(currentEncoderPulseR - lastEncoderPulseR);
+
+            if (diffEncoderPulseL > encoderMax / 2.0)
+                diffEncoderPulseL -= encoderMax;
+            else if (diffEncoderPulseL < -encoderMax / 2.0)
+                diffEncoderPulseL += encoderMax;
+            if (diffEncoderPulseR > encoderMax / 2.0)
+                diffEncoderPulseR -= encoderMax;
+            else if (diffEncoderPulseR < -encoderMax / 2.0)
+                diffEncoderPulseR += encoderMax;
+
+
+            lastEncoderPulseL = currentEncoderPulseL;
+            lastEncoderPulseR = currentEncoderPulseR;
+
+            double wheelAngleL = (diffEncoderPulseL / pulsesPerRotation) * 2 * Math.PI;
+            double wheelAngleR = (diffEncoderPulseR / pulsesPerRotation) * 2 * Math.PI;
+
+            wheelDistanceL = wheelRadius * wheelAngleL;
+            wheelDistanceR = wheelRadius * wheelAngleR;
+
+            distanceTravelled = (wheelDistanceL + wheelDistanceR) / 2;
+            angleTravelled = (wheelDistanceR - wheelDistanceL) / (2 * robotRadius);
+
+            cummulativeDistanceTravelled += distanceTravelled;
+            cummulativeAngleTravelled += angleTravelled;
 
 
             // ****************** Additional Student Code: End   ************
